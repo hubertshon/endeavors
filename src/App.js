@@ -26,6 +26,7 @@ const [pointsList, setPointsList] = useState(samplePoints);
     <PointsContext.Provider value={{pointsList, setPointsList}}>
       <div className="App">
         <header className="App-header">
+          <h1 className="display-2">ENDEAVORS</h1>
         </header>
         <MainPage />
       </div>

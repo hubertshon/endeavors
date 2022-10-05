@@ -1,9 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 .App {
   text-align: center;
   color: rgb(229, 229, 229);
   height: 100%;
   background-color: rgb(24, 24, 24); 
   font-family: 'Avenir', sans-serif;
+  /* background: url(../src/Assets/mockaroon-YqUeLG7fMr4-unsplash.jpg) repeat top left; */
+
+
+}
+
+.App-header {
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-header h1 {
+  font-family: "Staatliches", sans-serif;
+  letter-spacing: 0.05em;
 
 }
 
