@@ -8,6 +8,13 @@
 .nav-item {
     text-align: center;
     margin: auto 1rem;
+    color: rgb(229, 229, 229);
     letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    color: white;
 }
 
