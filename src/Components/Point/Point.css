@@ -1,6 +1,26 @@
 .point-container {
-    height: 7rem;
+    height: 10rem;
     width: 28rem;
-    border: 1px solid #ECECEC;
+    border-radius: 7px;
+    background-color: #333333;
     margin: 1rem 0;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.point-container:hover {
+    background-color: #444444;
+    cursor: pointer;
+}
+
+.point-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+}
+
+.button-dock {
+    display: flex;
+    justify-content: right;
+
 }

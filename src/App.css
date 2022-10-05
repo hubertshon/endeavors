@@ -1,7 +1,14 @@
 .App {
   text-align: center;
   color: rgb(229, 229, 229);
-  background-color: rgb(76, 76, 76);
+  height: 100%;
+  background-color: rgb(24, 24, 24); 
+  font-family: 'Avenir', sans-serif;
+
+}
+
+html {
+  background-color: rgb(24, 24, 24); 
 }
 
 

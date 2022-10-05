@@ -1,16 +1,25 @@
-import React, { useState }from "react";
+import React, { useContext }from "react";
 import { Point } from "../Point/Point";
+import { PointsContext } from "../../Context/PointsContext";
+
+import * as Icon from "react-feather";
 
 
-export const PointList = (props) => {
 
-    const [pointList, setPointList] = useState([]);
-    
+export const PointList = () => {
+
+    const  {pointsList, setPointsList} = useContext(PointsContext);
+
     return (
         <div className="container" data-testid="container">
-            {pointList !== null ? props.pointList.map((point) => {
-                return <Point name={point.name} location={point.location} />
+            {pointsList !== null ? pointsList.map((point, index) => {
+                return <Point key={index} name={point.name} location={point.location} />
             }) : null }
+            <button 
+                className="btn btn-light"
+                onClick={() => setPointsList([...pointsList, {name: "New", location: "New"}])}
+                ><Icon.Plus size="18" />
+            </button>
         </div>
     )
 
