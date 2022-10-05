@@ -1,0 +1,13 @@
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    width: 15rem;
+    justify-content: space-around;
+}
+
+.nav-item {
+    text-align: center;
+    margin: auto 1rem;
+    letter-spacing: 0.12em;
+}
+

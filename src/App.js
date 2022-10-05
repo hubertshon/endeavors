@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './App.css';
-import { MainPage } from './Pages/MainPage/MainPage';
+import { Journey } from './Pages/JourneyPage/JourneyPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { PointsContext } from './Context/PointsContext';
-
+import { Nav } from './Components/Nav/Nav';
 
 
 function App() {
@@ -26,9 +26,11 @@ const [pointsList, setPointsList] = useState(samplePoints);
     <PointsContext.Provider value={{pointsList, setPointsList}}>
       <div className="App">
         <header className="App-header">
-          <h1 className="display-2">ENDEAVORS</h1>
+          <Nav navItems={["ABOUT", "JOURNEYS"]} />
+          <h1 className="display-2 mx-5">ENDEAVORS</h1>
+          <Nav navItems={["EDITS", "HELP"]}/>
         </header>
-        <MainPage />
+        <Journey />
       </div>
     </PointsContext.Provider>
   );

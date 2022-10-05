@@ -22,5 +22,8 @@
 .button-dock {
     display: flex;
     justify-content: right;
+}
 
+.button-dock button {
+    color: #9c9c9c;
 }
