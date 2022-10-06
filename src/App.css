@@ -29,4 +29,11 @@ html {
 }
 
 
+.home-btn {
+  text-decoration: none;
+  color: rgb(229, 229, 229);
+}
 
+.home-btn:hover {
+  color: white;
+}

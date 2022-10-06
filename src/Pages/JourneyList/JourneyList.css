@@ -1,0 +1,22 @@
+.list-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.journey-title {
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.small-map {
+    width: 22rem;
+    height: 22rem;
+    border: 1px solid white;
+}
+
+.list-header {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.8em;
+}

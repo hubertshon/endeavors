@@ -11,8 +11,11 @@ export const Journey = (props) => {
 
 
     return (
-        <Container className="p-2">
-            <h5 className="journey-header mt-2 mb-4">JOURNEY</h5>
+        <Container className="d-flex flex-column p-2">
+            <div className="d-flex journey-header">
+                <h5 className="header-title mb-4 mx-4">JOURNEY</h5>
+                <h5 className="header-date mx-4">3.19 - 3.31.2021</h5>
+            </div>
             <Row>
                 <Col><PointList /></Col>
                 <Col><Map /></Col>

@@ -1,4 +1,15 @@
 .journey-header {
+    width: 80%;
+    align-self: center;
+    justify-content: center;
+}
+
+.header-title {
     letter-spacing: 0.12em;
     font-weight: bold;
+}
+
+.header-date {
+    font-weight: 300;
+    font-size: 1.1em;
 }

@@ -5,7 +5,8 @@ import { JourneyList } from './Pages/JourneyList/JourneyList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { PointsContext } from './Context/PointsContext';
 import { Nav } from './Components/Nav/Nav';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
+import { sampleData } from './sampledata';
 
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
     },
     {
       name: "Journeys",
-      path: "/journeys"
+      path: "/journey"
     }
   ];
 
@@ -58,18 +59,21 @@ function App() {
       path: "/help"
     }
   ]
-const [pointsList, setPointsList] = useState(samplePoints);
+
+// const [pointsList, setPointsList] = useState(samplePoints);
+const [journeysList, setJourneysList] = useState(sampleData);
+
   return (
-    <PointsContext.Provider value={{pointsList, setPointsList}}>
+    <PointsContext.Provider value={{journeysList, setJourneysList}}>
       <div className="App">
-        <header className="App-header">
+        <header className="App-header mb-4">
           <Nav navItems={navLinks1} />
-          <h1 className="display-2 mx-5">ENDEAVORS</h1>
+          <Link className="home-btn" to="journey/1"><h1 className="display-2 mx-5">ENDEAVORS</h1></Link>
           <Nav navItems={navLinks2}/>
         </header>
         <Routes>
-          <Route path="/" element={<Journey />}/>
-          <Route path="/journeys" element={<JourneyList journeys={sampleJourneys} />} />
+          <Route path="/journey/:journeyId" element={<Journey />} />
+          <Route path="/journey" element={<JourneyList />} />
         </Routes>
       </div>
     </PointsContext.Provider>
