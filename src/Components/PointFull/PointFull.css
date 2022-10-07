@@ -25,7 +25,7 @@ h4, h6 {
 }
 
 /* Added from Modal styles */
-.point-title, #pointNameInput {
+.point-title, #name {
     text-transform: uppercase;
     letter-spacing: 0.12em;
     font-size: 1.5em;
@@ -40,6 +40,10 @@ h4, h6 {
 input {
     background-color: rgb(37, 37, 37);
     /* border: 0.5px solid rgb(120, 120, 120); */
+    /* padding: 0.15rem; */
+    border-radius: 4px;
+    padding-left: 0.25rem;
+    border: unset;
     color:rgb(229, 229, 229);
     font-family: "Avenir", sans-serif;
 

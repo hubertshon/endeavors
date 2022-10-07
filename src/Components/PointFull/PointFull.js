@@ -18,9 +18,9 @@ export const PointFull = (props) => {
 
     const handleInputClick = (e) => {
         setFormState({
-                ...formState,
-                [e.target.id]: true
-            });
+            ...formState,
+            [e.target.id]: true
+        });
     }
 
     
@@ -50,11 +50,11 @@ export const PointFull = (props) => {
             {formState.pointName ? 
                 <input 
                     name="pointName" 
-                    id="pointNameInput" 
+                    id="name" 
                     type="text" 
                     ref={refOne} 
-                    value={props.point.name} 
-                    onChange={() => {}} /> 
+                    defaultValue={props.point.name} 
+                    onChange={(e) => {props.onChange(e, props.point.id)}} /> 
                 : 
                 <h4 className="point-title"
                     ref={refOne} 
@@ -65,10 +65,11 @@ export const PointFull = (props) => {
             {formState.pointLocation ? 
             <input
                 name="pointLocation"
+                id="location"
                 type="text"
                 ref={refOne}
-                value={props.point.location} 
-                onChange={() => {}} /> 
+                defaultValue={props.point.location} 
+                onChange={(e) => {props.onChange(e, props.point.id)}} /> 
             : 
             <h6 className="location" 
                 ref={refOne} 
@@ -80,9 +81,11 @@ export const PointFull = (props) => {
             {formState.pointText ? 
                 <MyEditor
                     name="pointText"
+                    id="text"
                     type="text"
-                    // ref={refOne}
-                    text={props.point.text} 
+                    ref={refOne}
+                    text={props.point.text}
+                    // handleChange={(e) => {props.onChange(e, props.point.id)}} 
                      /> 
                 : 
                 <p className="point-body mt-4"
@@ -90,11 +93,6 @@ export const PointFull = (props) => {
                     id="pointText"
                     onClick={(e) => handleInputClick(e)}
                     >{props.point.text}</p>
-                // <h6 className="location" 
-                //     ref={refOne} 
-                //     id="pointLocation" 
-                //     onClick={(e) => handleInputClick(e)}
-                //     >{props.point.location}</h6>
                 }
             
             <div className="align-self-end button-dock mt-auto">

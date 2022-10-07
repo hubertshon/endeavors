@@ -74,6 +74,17 @@ export const PointList = () => {
         setShowFullPoint(true);
     }
 
+    const handleChange = (e, pointId) => {
+        console.log('EDIT', e);
+        console.log('ID', pointId);
+        const newPoints = [...pointsList];
+        const editingPoint = newPoints.find((point) => {
+            return point.id == pointId; 
+        });
+        editingPoint[e.target.id] = e.target.value;
+        console.log('EDIT', editingPoint);
+        setPointsList(newPoints); 
+    }
 
     return (
         <>
@@ -82,6 +93,7 @@ export const PointList = () => {
         <PointFull 
             point={selectedPoint} 
             handleClose={() => setShowFullPoint(false)}
+            onChange={(e, val) => handleChange(e, val)}
             />
             </div>
         : 

@@ -12,7 +12,7 @@ import { Editor, EditorState, ContentState } from 'draft-js';
 //   link: { inDropdown: true },
 //   history: { inDropdown: false },
 // }
-export const MyEditor = (props) => {
+export const MyEditor = React.forwardRef((props, ref) => {
 
   const newState = EditorState.createEmpty();
   const content = ContentState.createFromText(props.text);
@@ -28,7 +28,9 @@ export const MyEditor = (props) => {
 
 
   return  (
-    <Editor editorState={editorState} onChange={setEditorState} />
+    <div ref={ref}>
+      <Editor editorState={editorState} onChange={setEditorState}  />
+    </div>
     // <Editor
     //     editorState={editorState}
     //     editorStyle={{ 
@@ -43,4 +45,4 @@ export const MyEditor = (props) => {
     //     toolbar={toolbarOptions}
     // />    
   )
-}
+});

@@ -14,7 +14,7 @@ export const Point = (props) => {
         <Container className="point-container">
             <div className="innerContainer">
                 <Row>
-                    <Col className="d-flex justify-content-left">
+                    <Col className="d-flex justify-content-left" xs={9}>
                         <h5 className="point-title">{props.point.name}</h5>
                     </Col>
                     <Col>
