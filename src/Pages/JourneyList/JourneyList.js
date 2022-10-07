@@ -4,8 +4,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { PointsContext } from "../../Context/PointsContext";
 import { Link } from 'react-router-dom';
 
-
 import * as Icon  from 'react-feather';
+
 
 export const JourneyList = () => {
 
@@ -44,23 +44,23 @@ export const JourneyList = () => {
                     </Col>
                 </Row>  
                 {journeysList.journeys.map((journey, index) => {
-                return (  
-                    <Link to={`/journey/${journey.id}`} >
-                    <Row key={journey.id} className="mb-3" >
-                        <Col className="d-flex justify-content-left" xs={4}>
-                            <span className="journey-title">{journey.name}</span>
-                        </Col>
-                        <Col className="d-flex justify-content-left">
-                            <span>{journey.location}</span>
-                        </Col>
-                        <Col className="d-flex justify-content-left" xs={6}>
-                            <span>{journey.description}</span>
-                        </Col>
-                    </Row>    
-                    </Link>
-                )
+                    return (  
+                        <Link to={`/journey/${journey.id}`} state={{ journey: journey }}>
+                        <Row key={journey.id} className="mb-3" >
+                            <Col className="d-flex justify-content-left" xs={4}>
+                                <span className="journey-title">{journey.name}</span>
+                            </Col>
+                            <Col className="d-flex justify-content-left">
+                                <span>{journey.location}</span>
+                            </Col>
+                            <Col className="d-flex justify-content-left" xs={6}>
+                                <span>{journey.description}</span>
+                            </Col>
+                        </Row>    
+                        </Link>
+                    )
                 })}
-            </div>
+                </div>
             </Col>
             <Col>
             <div className="small-map">

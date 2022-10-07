@@ -1,0 +1,24 @@
+.point-full-container {
+    max-height: 42rem;
+    width: 36rem;
+    border-radius: 7px;
+    background-color: #333333;
+    overflow: hidden;
+    padding: 1rem;  
+    justify-content: left;
+}
+
+
+.point-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+}
+
+.point-body {
+    text-align: left;
+}
+
+h4, h6 {
+    text-align: left;
+}

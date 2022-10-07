@@ -1,16 +1,26 @@
 .point-container {
     height: 10rem;
-    width: 28rem;
+    /* width: 28rem; */
     border-radius: 7px;
     background-color: #333333;
-    margin: 1rem 0;
-    overflow: hidden;
+    margin-bottom: 1rem;
     padding: 1rem;
+   
+
 }
+
+
 
 .point-container:hover {
     background-color: #444444;
     cursor: pointer;
+}
+
+.innerContainer{ 
+    /* width: 28rem; */
+    height: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .point-title {

@@ -1,0 +1,18 @@
+.dev-container { 
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.row {
+    display: flex;
+    justify-content: left;
+}
+
+.row p {
+    text-align: left;
+}
+
+.intro-text {
+    font-size: 1.35em;
+}

@@ -20,3 +20,15 @@
     letter-spacing: 0.12em;
     font-size: 0.8em;
 }
+
+.journey-list a {
+    text-decoration: none;
+    color: rgb(229, 229, 229);
+}
+
+.journey-list a:hover {
+    /* text-decoration: none; */
+    color: rgb(165, 165, 165);
+}
+
+
