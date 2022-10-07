@@ -52,7 +52,6 @@ export const PointList = () => {
 
     const selectPoint = (e) => { 
         if (e) {
-            console.log('not null', e);
         } else {
             setSelectedPoint({
                 point: {
@@ -75,14 +74,11 @@ export const PointList = () => {
     }
 
     const handleChange = (e, pointId) => {
-        console.log('EDIT', e);
-        console.log('ID', pointId);
         const newPoints = [...pointsList];
         const editingPoint = newPoints.find((point) => {
             return point.id == pointId; 
         });
         editingPoint[e.target.id] = e.target.value;
-        console.log('EDIT', editingPoint);
         setPointsList(newPoints); 
     }
 

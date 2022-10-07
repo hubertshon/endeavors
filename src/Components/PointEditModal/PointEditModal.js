@@ -26,7 +26,6 @@ export const PointEditModal = (props) => {
 
     useEffect(() => {
         document.addEventListener("click", handleClickOutside, true);
-        console.log('modalState', modalState);
     }, []);
 
     const handleClickOutside = (e) => {
@@ -38,7 +37,6 @@ export const PointEditModal = (props) => {
         } 
     }
 
-    console.log('props point', props.point);
     return (
         <>
         <form>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { JourneyList } from './Pages/JourneyList/JourneyList';
 import { About } from './Pages/About/About';
 import { Dev } from './Pages/Dev/Dev'
 
-import { PointsContext } from './Context/PointsContext';
+import { MapsContext, PointsContext } from './Context/PointsContext';
 import { Nav } from './Components/Nav/Nav';
 import { sampleData } from './sampledata';
 
@@ -37,10 +37,20 @@ function App() {
     }
   ]
 
+const defaultMapState = () => {
+  return {pointSelecting: false}
+}
+
 const [journeysList, setJourneysList] = useState(sampleData);
+const [mapState, setMapState] = useState(defaultMapState);
+
+useEffect(() => {
+  console.log('App.js// mapState', mapState);
+}, [mapState])
 
   return (
-    <PointsContext.Provider value={{journeysList, setJourneysList}}>
+    <PointsContext.Provider value={{journeysList, setJourneysList, mapState, setMapState}}>
+      <MapsContext.Provider value={{mapState, setMapState}}>
       <div className="App">
         <header className="App-header mb-4">
           <Nav navItems={navLinks1} />
@@ -54,6 +64,7 @@ const [journeysList, setJourneysList] = useState(sampleData);
           <Route path="/dev" element={<Dev />} />
         </Routes>
       </div>
+      </MapsContext.Provider>
     </PointsContext.Provider>
   );
 }

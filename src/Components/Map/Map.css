@@ -1,8 +1,32 @@
 .map-container {
     height: 42rem;
     width: 42rem;
-    border: 1px solid #ECECEC;
+    /* border: 1px solid #ECECEC; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
+.SuperAwesomePin {
+    height: 35px;
+    width: 35px;
+    /* border: 1px solid blue; */
+    position: absolute;
+    transform: 'translate(-50%, -50%)';
+
+}
+
+.pin {
+    height: 100%;
+}
+
+
+.greatPlaceStyleHover .pin{
+    color: #e95e02;
+}
+
+.point-selecting {
+    cursor: url("/src/Assets/icons/map-pin.svg") 16 16;
+}
+

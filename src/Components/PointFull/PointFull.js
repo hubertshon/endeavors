@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "./PointFull.css";
 import { MyEditor } from "../Editor/Editor";
+import { MapsContext } from "../../Context/PointsContext";
 
 import * as Icon from 'react-feather';
 
@@ -14,6 +15,8 @@ export const PointFull = (props) => {
         pointText: false
     }
     const [formState, setFormState] = useState(formControls);
+    const {mapState, setMapState} = useContext(MapsContext);
+
     const refOne = useRef(false);
 
     const handleInputClick = (e) => {
@@ -26,12 +29,14 @@ export const PointFull = (props) => {
     
 
     useEffect(() => {
-        console.log('formState', formState);
+        setMapState({...mapState})
+
         document.addEventListener("click", handleClickOutside);
 
         return function cleanup() {
             document.removeEventListener("click", handleClickOutside);
           };
+
     }, []);
 
     const handleClickOutside = (e) => {
@@ -42,6 +47,12 @@ export const PointFull = (props) => {
                 [e.target.id]: !formState[e.target.id]
             });
         } 
+    }
+
+    const makePointSelectable = (e) => {
+        setMapState(prevState => ({
+                pointSelecting: !prevState.pointSelecting
+        }));
     }
 
 
@@ -104,7 +115,8 @@ export const PointFull = (props) => {
                     >
                         <Icon.PenTool size="16" />
                     </button> */}
-                    <button className="btn btn-sm btn-link-light"
+                    <button className={`btn btn-sm btn-link-light ${mapState.pointSelecting ? 'b-highlight' : ''}`}
+                    onClick={makePointSelectable}
                     >
                         <Icon.MapPin size="16" />
                     </button>
