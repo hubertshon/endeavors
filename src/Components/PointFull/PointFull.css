@@ -1,6 +1,7 @@
 .point-full-container {
+    min-height: 28rem;
     max-height: 42rem;
-    width: 36rem;
+    /* width: 36rem; */
     border-radius: 7px;
     background-color: #333333;
     overflow: hidden;
@@ -21,4 +22,29 @@
 
 h4, h6 {
     text-align: left;
+}
+
+/* Added from Modal styles */
+.point-title, #pointNameInput {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 1.5em;
+}
+
+#exampleFormControlTextarea1 {
+    background-color: rgb(37, 37, 37);
+    border: 0.5px solid gray;
+    color: rgb(229, 229, 229);
+}
+
+input {
+    background-color: rgb(37, 37, 37);
+    /* border: 0.5px solid rgb(120, 120, 120); */
+    color:rgb(229, 229, 229);
+    font-family: "Avenir", sans-serif;
+
+}
+
+textarea {
+    height: 100%;
 }

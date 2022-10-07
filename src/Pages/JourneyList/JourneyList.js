@@ -15,9 +15,11 @@ export const JourneyList = () => {
         setJourneysList({ journeys: [
             ...journeysList.journeys, 
             {
+                id: Math.floor(Math.random() * 100) + 1,
                 name: "New Journey", 
-                location: "New", 
-                description: "This is a new Journey"
+                date: "03.05.2022", 
+                description: "This is a new Journey",
+                points: []
             }                                       
         ]});
     }
@@ -26,7 +28,7 @@ export const JourneyList = () => {
         <Container className="list-container">
             <Col xs={8}>
                 <div className="d-flex mb-4 justify-content-left">
-                    <button className="btn btn-light align-items-center"
+                    <button className="btn btn-outline-light align-items-center" style={{ border: "0.5px dashed white"}}
                     onClick={() => addNewJourney()}
                     >New Journey <Icon.Edit size="14" /></button>
                     
@@ -37,7 +39,7 @@ export const JourneyList = () => {
                         <span className="list-header">Name</span>
                     </Col>
                     <Col className="d-flex justify-content-left">
-                        <span className="list-header">Location</span>
+                        <span className="list-header">Date</span>
                     </Col>
                     <Col className="d-flex justify-content-left" xs={6}>
                         <span className="list-header">Description</span>
@@ -45,18 +47,18 @@ export const JourneyList = () => {
                 </Row>  
                 {journeysList.journeys.map((journey, index) => {
                     return (  
-                        <Link to={`/journey/${journey.id}`} state={{ journey: journey }}>
-                        <Row key={journey.id} className="mb-3" >
-                            <Col className="d-flex justify-content-left" xs={4}>
-                                <span className="journey-title">{journey.name}</span>
-                            </Col>
-                            <Col className="d-flex justify-content-left">
-                                <span>{journey.location}</span>
-                            </Col>
-                            <Col className="d-flex justify-content-left" xs={6}>
-                                <span>{journey.description}</span>
-                            </Col>
-                        </Row>    
+                        <Link to={`/journey/${journey.id}`} key={journey.id} state={{ journey: journey }}>
+                            <Row className="mb-3" >
+                                <Col className="d-flex justify-content-left" xs={4}>
+                                    <span className="journey-title">{journey.name}</span>
+                                </Col>
+                                <Col className="d-flex justify-content-left">
+                                    <span>{journey.date}</span>
+                                </Col>
+                                <Col className="d-flex justify-content-left" xs={6}>
+                                    <span>{journey.description}</span>
+                                </Col>
+                            </Row>    
                         </Link>
                     )
                 })}

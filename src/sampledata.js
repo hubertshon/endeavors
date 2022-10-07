@@ -4,7 +4,7 @@ export const sampleData = {
             id: 1,
             name: "First Journey",
             description: "The first step",
-            location: "Location One",
+            date: "10.29.2020",
             points: [
                 {
                     id: 1,
@@ -30,7 +30,7 @@ export const sampleData = {
             id: 2,
             name: "Second Journey",
             description: "The adventure continues",
-            location: "Location Two",
+            date: "04.19.2021",
             points: [
                 {
                     id: 4,

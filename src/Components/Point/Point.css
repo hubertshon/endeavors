@@ -1,12 +1,10 @@
 .point-container {
-    height: 10rem;
+    height: 11rem;
     /* width: 28rem; */
     border-radius: 7px;
     background-color: #333333;
     margin-bottom: 1rem;
     padding: 1rem;
-   
-
 }
 
 
@@ -18,7 +16,7 @@
 
 .innerContainer{ 
     /* width: 28rem; */
-    height: 95%;
+    height: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -36,4 +34,12 @@
 
 .button-dock button {
     color: #9c9c9c;
+}
+
+.date-location {
+    font-size: 0.95em;
+    font-weight: 400;
+    /* font-weight: 200; */
+    /* letter-spacing: 0.08em; */
+    /* text-transform: uppercase; */
 }

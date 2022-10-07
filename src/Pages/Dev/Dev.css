@@ -1,5 +1,5 @@
 .dev-container { 
-    height: 100vh;
+    height: 120vh;
     flex-direction: column;
     justify-content: space-around;
 }
@@ -13,6 +13,27 @@
     text-align: left;
 }
 
-.intro-text {
+.dev-container h3 {
+    text-align: left;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.dev-text {
     font-size: 1.35em;
+}
+
+.quote {
+    font-size: 2.6em;
+    font-family: "Nothing You Could Do", serif;
+    text-align: left;
+    text-justify: inter-character;
+    margin-bottom: 5rem;
+}
+
+.author {
+    text-align: right;
+    margin-right: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
 }

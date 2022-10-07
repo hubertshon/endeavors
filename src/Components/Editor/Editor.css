@@ -1,7 +1,7 @@
 .DraftEditor-editorContainer {
     background-color: rgb(29, 29, 26) !important;
     border-radius: 5px;
-    padding: 1rem;
+    padding: 0.1rem 1rem;
     margin: 0 auto;
     width: 100%;
 }

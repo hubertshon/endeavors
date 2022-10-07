@@ -58,7 +58,7 @@ export const PointEditModal = (props) => {
                 </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div class="mb-4">
+                    <div className="mb-4">
                         <span>Location: </span>
                         {modalState.pointLocation ? 
                             <input name="pointLocation" type="text" ref={refOne} value={props.point.location} onChange={() => {}} /> 

@@ -28,8 +28,8 @@ function App() {
 
   const navLinks2 = [
     {
-      name: "Profile", 
-      path: "/edits", 
+      name: "Points", 
+      path: "/points", 
     },
     {
       name: "Dev.Log",

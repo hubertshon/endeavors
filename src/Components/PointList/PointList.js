@@ -7,8 +7,6 @@ import { useParams } from "react-router-dom";
 import * as Icon from "react-feather";
 import { PointEditModal } from "../PointEditModal/PointEditModal";
 import Modal from 'react-bootstrap/Modal';
-// import Button from 'react-bootstrap/Button';
-// import { useParams } from "react-router-dom";
 
 
 export const PointList = () => {
@@ -87,7 +85,8 @@ export const PointList = () => {
             />
             </div>
         : 
-        <div className="container" data-testid="container">
+        <>
+        <div id="pointlist" className="container" data-testid="container" style={{ overflowY: "scroll", maxHeight: "70vh"}}>
             {pointsList !== null ? pointsList.map((point, index) => {
                 return <Point 
                     key={point.id} 
@@ -98,31 +97,35 @@ export const PointList = () => {
                     
                 />
             }) : null }
-            <div
-                className="newPoint-btn"
-                onClick={(e) => {
-                    setPointsList(
-                        [...pointsList, 
-                        {
-                            id: 999, 
-                            name: "New Point", 
-                            location: "New Point Location"
-                        }
-                    ]);
-                    setSelectedPoint(
-                        {
-                            id: 999, 
-                            name: "New Point", 
-                            location: "New Point Location"
-                        }
-                    );
-                    handleShow()}
-                }
-                >
-                    <span>ADD NEW POINT</span>
-                    <Icon.PlusCircle size="24" />
-            </div>
+            
         </div>
+        <div
+        className="newPoint-btn"
+        onClick={(e) => {
+            setPointsList(
+                [...pointsList, 
+                {
+                    id: 999, 
+                    name: "New Point", 
+                    location: "New Point Location",
+                    text: ""
+                }
+            ]);
+            setSelectedPoint(
+                {
+                    id: 999, 
+                    name: "New Point", 
+                    location: "New Point Location",
+                    text: ""
+                }
+            );
+        }
+        }
+        >
+            <span>ADD NEW POINT</span>
+            <Icon.PlusCircle size="24" />
+        </div>
+        </>
         }
 
         <Modal className="point-modal" show={show} size="lg" onHide={handleClose} variant="dark">
