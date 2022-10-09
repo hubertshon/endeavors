@@ -38,14 +38,14 @@ function App() {
   ]
 
 const defaultMapState = () => {
-  return {pointSelecting: false}
+  return {pointSelecting: false, mapHover: false
+  }
 }
 
 const [journeysList, setJourneysList] = useState(sampleData);
 const [mapState, setMapState] = useState(defaultMapState);
 
 useEffect(() => {
-  console.log('App.js// mapState', mapState);
 }, [mapState])
 
   return (

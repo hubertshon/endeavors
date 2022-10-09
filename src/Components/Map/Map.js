@@ -1,4 +1,4 @@
-import React, { useContext, useEffect }from "react"
+import React, { useContext, useEffect, useCallback, useState }from "react"
 import "./Map.css";
 import GoogleMapReact from 'google-map-react';
 
@@ -6,10 +6,10 @@ import GoogleMapReact from 'google-map-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { MapsContext } from '../../Context/PointsContext';
+import { MapsContext, PointsContext } from '../../Context/PointsContext';
+import { MapSearchBox } from "../MapSearchBox/MapSearchBox";
 
 library.add(faLocationDot);
-
 
 
 export const Map = (props) => {
@@ -19,8 +19,9 @@ export const Map = (props) => {
         zoom: 12
     }
 
-    const Marker = (mProps) => {
-        const style = mProps.$hover ? { color: '#758BFD', transform: 'scale(1.5)' } : { color: '#e95e02 '};
+    const Marker = (mProps) => { 
+        const style = mProps.$hover || mProps.id === mProps.hoverMarker ? { color: '#758BFD', transform: 'scale(1.5)' } : { color: '#e95e02 '};
+        // const hoverstyle =  ? { color: '#758BFD', transform: 'scale(1.5)' } : { color: '#e95e02 '};
 
         return <div className="SuperAwesomePin" style={style}>
             <FontAwesomeIcon icon="fa-solid fa-location-dot" size="xl" className="pin" />
@@ -153,34 +154,55 @@ export const Map = (props) => {
         }
     ]
 
+    const [map, setMap] = useState(null);
+    const [googleMaps, setGoogleMaps] = useState(null);
     const {mapState, setMapState} = useContext(MapsContext);
 
-    // const loadMap = (map, maps) => {
-    //     map.setOptions({
-    //         draggableCursor: "default",
-    //         draggingCursor: "pointer"
-    //       });
-    // }
 
-
-    // const handleApiLoaded = (map, maps) => {
-    //    console.log('map', map);
-    //    console.log('maps', maps);
-    //   };
+    const handleApiLoaded = (map, maps) => {
+        setMap(map);
+        setGoogleMaps(maps);
+    };
 
     const placeMapPin = (event) => {
-        return mapState.pointSelecting ? console.log('placing pin', event) : null; 
+        if (mapState.pointSelecting) {
+            props.handlePointSelect(event);
+            //add to markers
+            //save that to the state 
+        }
+
+        setMapState(prevState => ({
+            ...prevState,
+            pointSelecting: false
+        }));
+
     }
 
+    const handleOnPlacesChange = useCallback(e => { 
+        if (e && e[0] && e[0].geometry) { 
+            const lat = e[0].geometry.location.lat(); 
+            const lng = e[0].geometry.location.lng(); 
+            map.setCenter({ lat, lng }); 
+            map.setZoom(12); 
+        }}, [map]);
 
-    useEffect((e) => {
-        console.log('new effect', e)
-    }, []);
 
+    const handleMapHover = (value) => {
+        setMapState(prevState => ({
+            ...prevState,
+            mapHover: value
+        }));
+
+    } 
     return (
-        <div className="map-container" style={mapState.pointSelecting ? { border: '3px solid yellow'} : null}>
+        <div 
+            className="map-container" 
+            style={mapState.pointSelecting ? { border: '3px solid yellow'} : null}
+            onMouseEnter={() => handleMapHover(true)}
+            onMouseLeave={() => handleMapHover(false)}
+        >
+            <MapSearchBox maps={googleMaps} onPlacesChanged={handleOnPlacesChange()} mapState={mapState} />
             <GoogleMapReact
-                // className={`${mapState.pointSelecting ? 'point-selecting' : ''}`}
                 bootstrapURLKeys={{
                     key: process.env.REACT_APP_GOOGLE_MAPS_KEY,
                     libraries: ['places', 'geometry']
@@ -189,15 +211,17 @@ export const Map = (props) => {
                 defaultZoom={defaultProps.zoom}
                 options={{styles: styleOptions}
                 }
-                yesIWantToUseGoogleMapApiInternals
-                // onGoogleApiLoaded={({ map, maps }) => loadMap(map, maps)}
-
-                // overlayViewDivStyle={{pointerEvents: 'none'}}
-                onChildClick={(e, a) => console.log('hi child', a)}
+                yesIWantToUseGoogleMapApiInternals={true}
+                onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
                 onClick={(event) => {placeMapPin(event)}}
                 >
                     {props.markers.map((mark) => {
-                        return <Marker id={mark.id} key={mark.id} lat={mark.lat} lng={mark.lng} />
+                        return <Marker 
+                        id={mark.id} 
+                        hoverMarker={props.hoverMarkerId}
+                        key={mark.id} 
+                        lat={mark.lat} 
+                        lng={mark.lng} />
                     })}
                 </GoogleMapReact>
                 {/* <p>Map Goes Here</p> */}
@@ -205,3 +229,5 @@ export const Map = (props) => {
         </div>
     )
 }
+
+                // overlayViewDivStyle={{pointerEvents: 'none'}}

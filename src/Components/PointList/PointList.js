@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useState } from "react";
 import './PointList.css';
 import { Point } from "../Point/Point";
 import { PointFull } from "../PointFull/PointFull";
@@ -9,7 +9,8 @@ import { PointEditModal } from "../PointEditModal/PointEditModal";
 import Modal from 'react-bootstrap/Modal';
 
 
-export const PointList = () => {
+
+export const PointList = (props) => {
 
     const { journeyId } = useParams();
     const  {journeysList, setJourneysList} = useContext(PointsContext);
@@ -21,6 +22,8 @@ export const PointList = () => {
         return selectJourney.points
     }
 
+
+    //STATES DIVERGE HERE 
     const [pointsList, setPointsList] = useState(findJourney(journeyId));
     const [selectedPoint, setSelectedPoint] = useState({});
 
@@ -41,14 +44,9 @@ export const PointList = () => {
     // Modal Functions
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => {setShow(true); console.log('showing');};
+    const handleShow = () => setShow(true);
 
     // const refOne = useRef(false);
-
-
-    const changeValue = (thing) => {
-        console.log(thing);
-    }
 
     const selectPoint = (e) => { 
         if (e) {
@@ -65,12 +63,13 @@ export const PointList = () => {
 
     const editPoint = (point) => {
         setSelectedPoint(point);
-        handleShow();
+        // handleShow();
     }
     
     const displayPoint = (point) =>{ 
         setSelectedPoint(point);
         setShowFullPoint(true);
+        props.handlePointSelect(point);
     }
 
     const handleChange = (e, pointId) => {
@@ -82,8 +81,30 @@ export const PointList = () => {
         setPointsList(newPoints); 
     }
 
+    const pointHover = (e, point) => {
+        if (e._reactName === 'onMouseEnter') {
+            props.handlePointHover(point);
+        } else {
+            props.handlePointHover(null);
+        }
+    }
+
+    const exampleNewPoint = {
+        id: 999, 
+        name: "New Point", 
+        location: "New Point Location",
+        text: "",
+        loc: {
+            id: 999,
+            lat: null,
+            lng: null
+            
+        }
+    }
+
     return (
-        <>
+        <div id="pointlist" style={{overflowY: "scroll",
+        maxHeight: "70vh"}}>
         {showFullPoint ? 
         <div className="container" data-testid="container">
         <PointFull 
@@ -94,7 +115,7 @@ export const PointList = () => {
             </div>
         : 
         <>
-        <div id="pointlist" className="container" data-testid="container" style={{ overflowY: "scroll", maxHeight: "70vh"}}>
+        <div className="container" data-testid="container" >
             {pointsList !== null ? pointsList.map((point, index) => {
                 return <Point 
                     key={point.id} 
@@ -102,7 +123,7 @@ export const PointList = () => {
                     handleEdit={() => editPoint(point)}
                     handleRemove={() => removePoint(point.id)}
                     handlePointClick={() => displayPoint(point)}
-                    
+                    pointHover={(e) => pointHover(e, point)}          
                 />
             }) : null }
             
@@ -110,24 +131,9 @@ export const PointList = () => {
         <div
         className="newPoint-btn"
         onClick={(e) => {
-            setPointsList(
-                [...pointsList, 
-                {
-                    id: 999, 
-                    name: "New Point", 
-                    location: "New Point Location",
-                    text: ""
-                }
-            ]);
-            setSelectedPoint(
-                {
-                    id: 999, 
-                    name: "New Point", 
-                    location: "New Point Location",
-                    text: ""
-                }
-            );
-        }
+            setPointsList([...pointsList, exampleNewPoint]);
+            setSelectedPoint(exampleNewPoint);
+            }
         }
         >
             <span>ADD NEW POINT</span>
@@ -136,11 +142,11 @@ export const PointList = () => {
         </>
         }
 
-        <Modal className="point-modal" show={show} size="lg" onHide={handleClose} variant="dark">
-            <PointEditModal onChangeValue={(e) => changeValue(e)} point={selectedPoint}/>
-        </Modal>
+        {/* <Modal className="point-modal" show={show} size="lg" onHide={handleClose} variant="dark">
+            <PointEditModal onChangeValue={(e) => changeValue(e)} point={selectedPoint} />
+        </Modal> */}
 
-    </>
+    </div>
     )
 
 

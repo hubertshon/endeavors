@@ -10,8 +10,16 @@ import * as Icon from 'react-feather';
 
 export const Point = (props) => {
 
+    const pointStyle = props.point.img ? { height: 'unset'} : { height: "11rem" };
+
     return (
-        <Container className="point-container">
+        <Container 
+            className="point-container" 
+            onClick={() => props.handlePointClick()}
+            onMouseEnter={(e) => props.pointHover(e)}
+            onMouseLeave={(e) => props.pointHover(e)}
+            style={pointStyle}
+            >
             <div className="innerContainer">
                 <Row>
                     <Col className="d-flex justify-content-left" xs={9}>
@@ -20,8 +28,10 @@ export const Point = (props) => {
                     <Col>
                     <div className="button-dock">
                         <button className="btn btn-sm btn-link-light"
-                        onClick={() => props.handlePointClick()}
-                        ><Icon.Maximize2 size="16" /></button>
+                            onClick={() => props.handlePointClick()}
+                        >
+                            <Icon.Maximize2 size="16" />
+                        </button>
                         {/* <button className="btn btn-sm btn-link-light"
                             onClick={() => props.handlePointClick()}
                         >
@@ -39,9 +49,14 @@ export const Point = (props) => {
                         <p className="date-location">01.12.2021 - {props.point.location}</p>
                     </Col>
                 </Row>
+                {props.point.img.length > 0 ? <Row className="mb-2">
+                    <img src={require(`../../Assets/images/${props.point.img}`)} alt="image1" />
+                </Row> 
+                : 
                 <Row>
                     <p style={{textAlign: "left"}}>{props.point.text}</p>
-                </Row>
+                </Row>}
+                
             </div>
         </Container>
     )

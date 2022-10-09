@@ -1,0 +1,9 @@
+#mapsearch {
+    position: fixed;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    z-index: 99;
+    width: 20rem;
+}
+
+

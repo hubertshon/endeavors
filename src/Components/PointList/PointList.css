@@ -19,6 +19,10 @@
     cursor: pointer;
 }
 
+#pointlist {
+    margin-right: 1rem;
+}
+
 #pointlist::-webkit-scrollbar {
     width: 4px;
     margin-right: 1rem;

@@ -1,16 +1,60 @@
 .journey-header {
-    width: 80%;
+    width: 100%;
+    height: 3rem;
     align-self: center;
-    justify-content: center;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 .header-title {
     letter-spacing: 0.12em;
-    font-weight: bold;
+    font-weight: lighter;
     text-transform: uppercase;
+    margin: unset;
 }
 
 .header-date {
     font-weight: 300;
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
+    margin: unset;
+    letter-spacing: 0.05em;
 }
+
+.journey-buttonDock {
+    color: #9c9c9c;
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    /* margin-bottom: 1rem; */
+}
+
+.journey-buttonDock:hover {
+    color: rgb(229, 229, 229);
+}
+
+
+
+#pointlist::-webkit-scrollbar {
+    width: 4px;
+    margin-right: 1rem;
+  }
+  
+  /* Track */
+#pointlist::-webkit-scrollbar-track {
+    background: none;
+  }
+  
+  /* Handle */
+#pointlist::-webkit-scrollbar-thumb {
+    /* border-radius: 5px; */
+    background: #d5d5d5;
+  }
+  
+  /* Handle on hover */
+#pointlist::-webkit-scrollbar-thumb:hover {
+    background: white;
+}
+

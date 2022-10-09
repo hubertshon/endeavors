@@ -30,17 +30,15 @@ export const PointFull = (props) => {
 
     useEffect(() => {
         setMapState({...mapState})
-
         document.addEventListener("click", handleClickOutside);
 
         return function cleanup() {
             document.removeEventListener("click", handleClickOutside);
           };
-
     }, []);
 
     const handleClickOutside = (e) => {
-        console.log('clicking', refOne.current);
+        // console.log('clicking', refOne.current);
         if (refOne.current && !refOne.current.contains(e.target)) {
             setFormState({
                 ...formState,
@@ -105,20 +103,25 @@ export const PointFull = (props) => {
                     onClick={(e) => handleInputClick(e)}
                     >{props.point.text}</p>
                 }
+
+
+            {props.point.img.length > 0 ? 
+            <img src={require(`../../Assets/images/${props.point.img}`)} className="image" alt="image1" /> : null }
+
             
             <div className="align-self-end button-dock mt-auto">
                     <button className="btn btn-sm btn-link-light"
                     >
                         <Icon.Trash size="16" />
                     </button>
-                    {/* <button className="btn btn-sm btn-link-light"
-                    >
-                        <Icon.PenTool size="16" />
-                    </button> */}
                     <button className={`btn btn-sm btn-link-light ${mapState.pointSelecting ? 'b-highlight' : ''}`}
                     onClick={makePointSelectable}
                     >
                         <Icon.MapPin size="16" />
+                    </button>
+                    <button className="btn btn-sm btn-link-light"
+                    >
+                        <Icon.Camera size="16" />
                     </button>
                     <button className="btn btn-sm btn-link-light"
                     onClick={() => props.handleClose()}

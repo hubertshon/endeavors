@@ -1,6 +1,6 @@
 .point-full-container {
     min-height: 28rem;
-    max-height: 42rem;
+    /* max-height: 42rem; */
     /* width: 36rem; */
     border-radius: 7px;
     background-color: #333333;
@@ -55,4 +55,8 @@ textarea {
 
 .b-highlight {
     color: rgb(120, 120, 253) !important;
+}
+
+.image { 
+    width: 100%;
 }

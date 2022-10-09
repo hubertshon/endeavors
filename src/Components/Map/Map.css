@@ -1,10 +1,10 @@
 .map-container {
-    height: 42rem;
+    height: 70vh;
     width: 42rem;
     /* border: 1px solid #ECECEC; */
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
 
 
