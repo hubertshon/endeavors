@@ -12,6 +12,9 @@
 .small-map {
     width: 23rem;
     height: 23rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
     /* border: 1px solid #E5E5E5;
     box-sizing: border-box; */
 
@@ -31,7 +34,7 @@
     color: rgb(229, 229, 229);
 }
 
-.journey-list a:hover {
+.journey-row a:hover {
     /* text-decoration: none; */
     color: rgb(165, 165, 165);
 }
@@ -60,3 +63,45 @@
     text-align: left;
 }
 
+.dropdown-toggle {
+    background-color: rgb(165, 165, 165, 0);
+    border-color: rgb(165, 165, 165, 0);
+}
+.dropdown-toggle:hover{
+    background-color: rgb(165, 165, 165, 0);
+    border-color: rgb(165, 165, 165, 0);
+
+}
+
+.dropdown-toggle:active{
+    background-color: rgb(165, 165, 165, 0);
+    border-color: rgb(165, 165, 165, 0);
+
+}
+
+.dropdown-toggle::after {
+    display: none !important; 
+}
+
+.dropdown-toggle .active .focus {
+    background-color: yellow 
+}
+
+.delete-modal .modal-content {
+    background-color: rgb(45, 45, 45);
+    font-family: "Avenir", sans-serif;
+    color: rgb(229, 229, 229);
+}
+
+.delete-modal .modal-header {
+    border: unset;
+
+}
+
+.btn-close svg {
+    color: rgb(229, 229, 229);
+}
+
+.delete-modal .modal-footer {
+    border: unset;
+}

@@ -18,7 +18,7 @@ function App() {
   const navLinks1 = [
     {
       name: "About", 
-      path: "/about", 
+      path: "/", 
     },
     {
       name: "Journeys",
@@ -54,13 +54,13 @@ useEffect(() => {
       <div className="App">
         <header className="App-header mb-4">
           <Nav navItems={navLinks1} />
-          <Link className="home-btn" to="/about"><h1 className="display-2 mx-5">ENDEAVORS</h1></Link>
+          <Link className="home-btn" to="/"><h1 className="display-2 mx-5">ENDEAVORS</h1></Link>
           <Nav navItems={navLinks2}/>
         </header>
         <Routes>
           <Route path="/journey/:journeyId" element={<Journey />} />
           <Route path="/journey" element={<JourneyList />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/" element={<About />} />
           <Route path="/dev" element={<Dev />} />
         </Routes>
       </div>

@@ -22,10 +22,14 @@
     letter-spacing: 0.12em;
 }
 
-#exampleFormControlTextarea1 {
+#pointSummaryInput {
     background-color: rgb(37, 37, 37);
     border: 0.5px solid gray;
     color: rgb(229, 229, 229);
+}
+
+.journey-form {
+    /* height: 15rem; */
 }
 /* 
 input {
@@ -41,3 +45,17 @@ input {
     letter-spacing: 0.12em;
 } */
 
+
+.thumbnail {
+    width: 6rem;
+    height: 6rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid #E5E5E5;
+    box-sizing: border-box; */
+
+    -webkit-box-shadow: 0px 0px 0px 1px #d0d0d0;
+    -moz-box-shadow: 0px 0px 0px 1px #d0d0d0;
+    box-shadow: 0px 0px 0px 1px #d0d0d0;
+}

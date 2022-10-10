@@ -111,6 +111,7 @@ export const PointFull = (props) => {
             
             <div className="align-self-end button-dock mt-auto">
                     <button className="btn btn-sm btn-link-light"
+                    onClick={() => props.showDeleteModal()}
                     >
                         <Icon.Trash size="16" />
                     </button>

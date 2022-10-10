@@ -5,8 +5,8 @@ import { PointFull } from "../PointFull/PointFull";
 import { PointsContext } from "../../Context/PointsContext";
 import { useParams } from "react-router-dom";
 import * as Icon from "react-feather";
-import { PointEditModal } from "../PointEditModal/PointEditModal";
 import Modal from 'react-bootstrap/Modal';
+import { DeleteModal } from "../DeleteModal/DeleteModal";
 
 
 
@@ -43,8 +43,9 @@ export const PointList = (props) => {
 
     // Modal Functions
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleDeleteClose = () => setDeleteShow(false);
     const handleShow = () => setShow(true);
+    const [deleteShow, setDeleteShow] = useState(false);
 
     // const refOne = useRef(false);
 
@@ -93,7 +94,8 @@ export const PointList = (props) => {
         id: 999, 
         name: "New Point", 
         location: "New Point Location",
-        text: "",
+        text: "Enter a new description...",
+        img: '',
         loc: {
             id: 999,
             lat: null,
@@ -103,6 +105,7 @@ export const PointList = (props) => {
     }
 
     return (
+        <>
         <div id="pointlist" style={{overflowY: "scroll",
         maxHeight: "70vh"}}>
         {showFullPoint ? 
@@ -111,6 +114,7 @@ export const PointList = (props) => {
             point={selectedPoint} 
             handleClose={() => setShowFullPoint(false)}
             onChange={(e, val) => handleChange(e, val)}
+            showDeleteModal={() => setDeleteShow(true)}
             />
             </div>
         : 
@@ -123,6 +127,7 @@ export const PointList = (props) => {
                     handleEdit={() => editPoint(point)}
                     handleRemove={() => removePoint(point.id)}
                     handlePointClick={() => displayPoint(point)}
+                    handleDelete={() => setDeleteShow(true)}
                     pointHover={(e) => pointHover(e, point)}          
                 />
             }) : null }
@@ -142,11 +147,12 @@ export const PointList = (props) => {
         </>
         }
 
-        {/* <Modal className="point-modal" show={show} size="lg" onHide={handleClose} variant="dark">
-            <PointEditModal onChangeValue={(e) => changeValue(e)} point={selectedPoint} />
-        </Modal> */}
-
     </div>
+
+    <Modal className="delete-modal" show={deleteShow} size="md" onHide={handleDeleteClose} variant="dark">
+        <DeleteModal subject="point" />
+    </Modal>
+    </>
     )
 
 
