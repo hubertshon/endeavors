@@ -16,7 +16,6 @@ export const PointFull = (props) => {
     }
     const [formState, setFormState] = useState(formControls);
     const {mapState, setMapState} = useContext(MapsContext);
-
     const refOne = useRef(false);
 
     const handleInputClick = (e) => {

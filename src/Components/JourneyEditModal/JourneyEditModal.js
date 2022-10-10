@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import './JourneyEditModal.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -6,13 +6,6 @@ import Button from 'react-bootstrap/Button';
 
 
 export const JourneyEditModal = (props) => {
-
-    // const [show, setShow] = useState(false);
-
-    // let modalInputs = {
-    //     journeyName: false,
-    //     journeyLocation: false
-    // }
 
     return (
         <>

@@ -8,6 +8,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { MapsContext, PointsContext } from '../../Context/PointsContext';
 import { MapSearchBox } from "../MapSearchBox/MapSearchBox";
+import { useFetcher } from "react-router-dom";
 
 library.add(faLocationDot);
 
@@ -178,13 +179,28 @@ export const Map = (props) => {
 
     }
 
-    const handleOnPlacesChange = useCallback(e => { 
-        if (e && e[0] && e[0].geometry) { 
-            const lat = e[0].geometry.location.lat(); 
-            const lng = e[0].geometry.location.lng(); 
-            map.setCenter({ lat, lng }); 
-            map.setZoom(12); 
-        }}, [map]);
+    // const handleOnPlacesChange = useCallback(e => { 
+    //     console.log('Map // handleOnPlacesChanged', e);
+    //     if (e && e[0] && e[0].geometry) { 
+    //         const lat = e[0].geometry.location.lat(); 
+    //         const lng = e[0].geometry.location.lng(); 
+    //         map.setCenter({ lat, lng }); 
+    //         map.setZoom(12); 
+    //     }}, [map]);
+
+    const handleOnPlacesChange = async (e) => {
+        console.log('Map // e', e);
+        try {
+            const geoHero = new googleMaps.Geocoder();
+            const result = await geoHero.geocode({
+                "address": e
+            })
+            console.log('result', result);
+        }
+         catch(error) {
+            console.error(error)
+         }
+    }
 
 
     const handleMapHover = (value) => {
@@ -201,7 +217,11 @@ export const Map = (props) => {
             onMouseEnter={() => handleMapHover(true)}
             onMouseLeave={() => handleMapHover(false)}
         >
-            <MapSearchBox maps={googleMaps} onPlacesChanged={handleOnPlacesChange()} mapState={mapState} />
+            <MapSearchBox 
+                map={map} 
+                maps={googleMaps} 
+                onPlacesChanged={(e)=> handleOnPlacesChange(e)} 
+                mapState={mapState} />
             <GoogleMapReact
                 bootstrapURLKeys={{
                     key: process.env.REACT_APP_GOOGLE_MAPS_KEY,

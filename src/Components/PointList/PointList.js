@@ -47,20 +47,19 @@ export const PointList = (props) => {
     const handleShow = () => setShow(true);
     const [deleteShow, setDeleteShow] = useState(false);
 
-    // const refOne = useRef(false);
 
-    const selectPoint = (e) => { 
-        if (e) {
-        } else {
-            setSelectedPoint({
-                point: {
-                    id: 997, 
-                    name: "New Point", 
-                    location: "New Point Location"
-                }
-            }); 
-        }
-    }
+    // const selectPoint = (e) => { 
+    //     if (e) {
+    //     } else {
+    //         setSelectedPoint({
+    //             point: {
+    //                 id: 997, 
+    //                 name: "New Point", 
+    //                 location: "New Point Location"
+    //             }
+    //         }); 
+    //     }
+    // }
 
     const editPoint = (point) => {
         setSelectedPoint(point);
