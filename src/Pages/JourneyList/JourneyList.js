@@ -36,6 +36,8 @@ export const JourneyList = () => {
                 points: []
             }                                       
         ]});
+
+        //SEND POST REQUEST
     }
 
     const editJourney = (editJourney) => {
@@ -50,6 +52,9 @@ export const JourneyList = () => {
             journeysList.journeys[editIndex] = editJourney
 
         ]})
+
+        //SEND PATCH REQUEST
+        handleClose();
     }
 
     const deleteJourney = (deleteJourneyId) => {
@@ -61,6 +66,7 @@ export const JourneyList = () => {
             journeys: newJourneysList
         });
 
+        //SEND DELETE REQUEST
         handleClose();
     }
 

@@ -23,10 +23,30 @@ export const PointList = (props) => {
     }
 
 
-    //STATES DIVERGE HERE 
+    //STATES DIVERGE HERE ??
     const [pointsList, setPointsList] = useState(findJourney(journeyId));
     const [selectedPoint, setSelectedPoint] = useState({});
 
+
+    const addPoint = () => {
+        setPointsList([...pointsList, exampleNewPoint]);
+        //SEND POST REQUEST 
+    }
+
+    const handleChange = (e, pointId) => {
+        console.log('pointlist // handleChange', e);
+        console.log('pointlist // targetid', e.target.id);
+        console.log('pointlist // targetvalue', e.target.value);
+        // Change should only happen once user clicks OUT. 
+        const newPoints = [...pointsList];
+        const editingPoint = newPoints.find((point) => {
+            return point.id == pointId; 
+        });
+        editingPoint[e.target.id] = e.target.value;
+        setPointsList(newPoints); 
+
+        //SEND PATCH REQUEST 
+    }
 
     const removePoint = (pointId) => {
         setPointsList((pointsList) => {
@@ -35,6 +55,8 @@ export const PointList = (props) => {
             });
             return newList;
         });
+
+        //SEND DELETE REQUEST
     }
 
 
@@ -48,37 +70,15 @@ export const PointList = (props) => {
     const [deleteShow, setDeleteShow] = useState(false);
 
 
-    // const selectPoint = (e) => { 
-    //     if (e) {
-    //     } else {
-    //         setSelectedPoint({
-    //             point: {
-    //                 id: 997, 
-    //                 name: "New Point", 
-    //                 location: "New Point Location"
-    //             }
-    //         }); 
-    //     }
-    // }
-
     const editPoint = (point) => {
         setSelectedPoint(point);
-        // handleShow();
+        //SEND PATCH REQUEST 
     }
     
     const displayPoint = (point) =>{ 
         setSelectedPoint(point);
         setShowFullPoint(true);
         props.handlePointSelect(point);
-    }
-
-    const handleChange = (e, pointId) => {
-        const newPoints = [...pointsList];
-        const editingPoint = newPoints.find((point) => {
-            return point.id == pointId; 
-        });
-        editingPoint[e.target.id] = e.target.value;
-        setPointsList(newPoints); 
     }
 
     const pointHover = (e, point) => {
@@ -135,7 +135,7 @@ export const PointList = (props) => {
         <div
         className="newPoint-btn"
         onClick={(e) => {
-            setPointsList([...pointsList, exampleNewPoint]);
+            addPoint();
             setSelectedPoint(exampleNewPoint);
             }
         }

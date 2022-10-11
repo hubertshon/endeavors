@@ -24,12 +24,21 @@ export const MyEditor = React.forwardRef((props, ref) => {
       if (props.text.length > 0) {
         setEditorState(loadState);
       }
-    }, [])
+    }, []);
+
+    const sendText = () => {
+      const textValue = editorState.getCurrentContent().getPlainText('\u0001');
+      props.getEditorText(textValue);
+    }
 
 
   return  (
     <div ref={ref}>
-      <Editor editorState={editorState} onChange={setEditorState}  />
+      <Editor 
+        editorState={editorState} 
+        onChange={editorState => setEditorState(editorState)} 
+        onBlur={() => sendText()}  
+        />
     </div>
     // <Editor
     //     editorState={editorState}

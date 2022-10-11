@@ -52,6 +52,16 @@ export const PointFull = (props) => {
         }));
     }
 
+    const handleText = (e, pointId) => {
+        const eventObj = {
+            target: {
+                id: "text",
+                value: e
+            }
+        }
+        props.onChange(eventObj, props.point.id)
+    }
+
 
     return (
         <div className="d-flex point-full-container flex-column">
@@ -93,6 +103,7 @@ export const PointFull = (props) => {
                     type="text"
                     ref={refOne}
                     text={props.point.text}
+                    getEditorText={(e) => handleText(e, props.point.id)}
                     // handleChange={(e) => {props.onChange(e, props.point.id)}} 
                      /> 
                 : 
