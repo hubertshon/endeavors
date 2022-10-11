@@ -52,6 +52,18 @@ export const JourneyList = () => {
         ]})
     }
 
+    const deleteJourney = (deleteJourneyId) => {
+        const newJourneysList = journeysList.journeys.filter((journey) => {
+            return journey.id !== deleteJourneyId
+        });
+
+        setJourneysList({
+            journeys: newJourneysList
+        });
+
+        handleClose();
+    }
+
     const [show, setShow] = useState(false);
     const [deleteShow, setDeleteShow] = useState(false);
     const handleClose = () => {setShow(false); setDeleteShow(false)};
@@ -156,7 +168,10 @@ export const JourneyList = () => {
         </Modal>
 
         <Modal className="delete-modal" show={deleteShow} size="md" onHide={handleClose} variant="dark">
-            <DeleteModal subject={"journey"} />
+            <DeleteModal 
+                subject={"journey"} 
+                startDelete={() => deleteJourney(selectJourney.id)}
+                />
         </Modal>
         </>
     )
