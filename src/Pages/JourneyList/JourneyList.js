@@ -41,18 +41,11 @@ export const JourneyList = () => {
     }
 
     const editJourney = (editJourney) => {
-        console.log('editJourney', editJourney);
-
-        const editIndex = journeysList.find((journey) => {
-            return journey.id === editJourney.id
-        })
-
-        setJourneysList({journeys: [
-            ...journeysList.journeys,
-            journeysList.journeys[editIndex] = editJourney
-
-        ]})
-
+        setJourneysList(prevState => ({
+            journeys: prevState.journeys.map(
+                journey => journey.id === editJourney.id ? editJourney : journey)
+        }));
+            
         //SEND PATCH REQUEST
         handleClose();
     }
@@ -176,6 +169,7 @@ export const JourneyList = () => {
         <Modal className="delete-modal" show={deleteShow} size="md" onHide={handleClose} variant="dark">
             <DeleteModal 
                 subject={"journey"} 
+                handleClose={() => handleClose()}
                 startDelete={() => deleteJourney(selectJourney.id)}
                 />
         </Modal>

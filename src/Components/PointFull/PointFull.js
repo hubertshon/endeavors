@@ -37,7 +37,6 @@ export const PointFull = (props) => {
     }, []);
 
     const handleClickOutside = (e) => {
-        // console.log('clicking', refOne.current);
         if (refOne.current && !refOne.current.contains(e.target)) {
             setFormState({
                 ...formState,

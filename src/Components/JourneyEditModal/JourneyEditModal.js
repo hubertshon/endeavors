@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './JourneyEditModal.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -6,6 +6,15 @@ import Button from 'react-bootstrap/Button';
 
 
 export const JourneyEditModal = (props) => {
+
+    const [editJourney, setEditJourney] = useState(props.journey);
+
+    const handleChange = (e) => {
+        setEditJourney({
+            ...editJourney,
+            [e.target.id]: e.target.value
+        })
+    }
 
     return (
         <>
@@ -17,10 +26,24 @@ export const JourneyEditModal = (props) => {
                 <Modal.Body>
                     <form className="journey-form d-flex flex-column">
                         <label>Name</label>   
-                        <input name="pointName" id="pointNameInput" type="text" value={props.journey.name} onChange={() => {}} />  
+                        <input 
+                            name="pointName" 
+                            id="name" 
+                            type="text" 
+                            defaultValue={props.journey.name} 
+                            onChange={(e) => {handleChange(e)}} 
+                            />  
 
                         <label>Summary</label>   
-                        <textarea name="pointSummary" id="pointSummaryInput" type="text" value={props.journey.summary} onChange={() => {}} /> 
+                        <textarea 
+                        name="pointSummary" 
+                        id="summary" 
+                        type="text" 
+                        defaultValue={props.journey.summary} 
+                        onChange={(e) => {handleChange(e)}} 
+                        spellCheck="false"
+                        rows="3"
+                        /> 
 
                         <label>Photo</label>   
                         <div className="d-flex flex-row align-items-center justify-content-evenly mt-4 w-75">
@@ -36,7 +59,7 @@ export const JourneyEditModal = (props) => {
                 <Button variant="outline-light" onClick={props.handleClose}>
                     Close
                 </Button>
-                <Button variant="outline-light" onClick={() => props.handleSubmit(props.journey)}>
+                <Button variant="outline-light" onClick={() => props.handleSubmit(editJourney)}>
                     Save Changes
                 </Button>
             </Modal.Footer>

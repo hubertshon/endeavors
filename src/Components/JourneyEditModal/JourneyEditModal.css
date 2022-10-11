@@ -17,12 +17,12 @@
     border: unset;
 }
 
-.point-title, #pointNameInput {
+.point-title, #name {
     text-transform: uppercase;
     letter-spacing: 0.12em;
 }
 
-#pointSummaryInput {
+#summary {
     background-color: rgb(37, 37, 37);
     border: 0.5px solid gray;
     color: rgb(229, 229, 229);

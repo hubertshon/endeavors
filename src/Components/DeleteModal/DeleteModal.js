@@ -16,7 +16,7 @@ export const DeleteModal = (props) => {
                     onClick={() => props.startDelete()}
                     >Delete <Icon.Edit size="14" /></button>
                     <button className="btn btn-outline-light align-items-center" style={{ border: "0.5px solid #e5e5e5"}}
-                    onClick={() => console.log('delete')}
+                    onClick={() => props.handleClose()}
                     >Cancel <Icon.Edit size="14" /></button>
             </Modal.Footer>
         </>

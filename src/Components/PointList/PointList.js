@@ -34,9 +34,6 @@ export const PointList = (props) => {
     }
 
     const handleChange = (e, pointId) => {
-        console.log('pointlist // handleChange', e);
-        console.log('pointlist // targetid', e.target.id);
-        console.log('pointlist // targetvalue', e.target.value);
         // Change should only happen once user clicks OUT. 
         const newPoints = [...pointsList];
         const editingPoint = newPoints.find((point) => {
