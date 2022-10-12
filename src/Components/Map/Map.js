@@ -181,7 +181,6 @@ export const Map = (props) => {
             //add to markers
             //save that to the state 
         } else if (context === 'search') {
-            console.log('pinfromsearch', event);
             props.handlePointSelect(event);
         }
 

@@ -57,4 +57,20 @@
 #pointlist::-webkit-scrollbar-thumb:hover {
     background: white;
 }
+/* 
+@keyframes fadeInMap {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.show-map {
+    opacity: 0;
 
+}
+
+.no-show-map {
+    display: hidden;
+} */

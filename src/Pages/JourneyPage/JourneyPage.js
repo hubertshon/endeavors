@@ -56,12 +56,18 @@ export const Journey = (props) => {
             return point.id == selectedPoint.id
         });
 
-        setJourneysList({ journeys: [
-            ...journeysList.journeys, 
-            journeysList.journeys[updateIndex].points[pointUpdateIndex].loc.lng = e.lng,
-            journeysList.journeys[updateIndex].points[pointUpdateIndex].loc.lat = e.lat,
-                                   
-        ]});
+        setJourneysList(prevState => ({
+            journeys: prevState.journeys.map(
+                (journeyIndex) => {
+                if (journeyIndex.id === journey.id) {
+                    journeyIndex.points[pointUpdateIndex].loc.lng = e.lng;
+                    journeyIndex.points[pointUpdateIndex].loc.lat = e.lat
+                    return journeyIndex
+                } else {
+                    return journeyIndex
+                }
+            })
+        }));
 
     }
 
@@ -84,14 +90,20 @@ export const Journey = (props) => {
                     
                 </div>
                 <Row>
-                    <Col><PointList 
-                    handlePointSelect={(e) => selectMapPoint(e)} 
-                    handlePointHover={(e) => setHoverMarkerFunc(e)}
+                    <Col>
+                    <PointList 
+                        handlePointSelect={(e) => selectMapPoint(e)} 
+                        handlePointHover={(e) => setHoverMarkerFunc(e)}
                     /></Col>
-                    <Col><Map markers={markers} 
-                    handlePointSelect={(e) => selectMapLocation(e)} 
-                    hoverMarkerId={hoverMarker}
-                    /></Col>
+                    <Col>
+                    <Map 
+                        
+                        markers={markers} 
+                        handlePointSelect={(e) => selectMapLocation(e)} 
+                        hoverMarkerId={hoverMarker}
+                    />
+
+                    </Col>
                 </Row>
             </Container>
     )
