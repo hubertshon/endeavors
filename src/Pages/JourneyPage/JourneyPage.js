@@ -50,8 +50,7 @@ export const Journey = (props) => {
         const updateIndex = updatingJourneys.findIndex((journey) => {
             return journey.id == journeyId.journeyId
         });
-
-
+        
 
         const pointUpdateIndex = updatingJourneys[updateIndex].points.findIndex((point) => {
             return point.id == selectedPoint.id

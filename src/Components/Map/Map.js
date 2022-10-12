@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useCallback, useState }from "react"
+import React, { useContext, useState }from "react"
 import "./Map.css";
 import GoogleMapReact from 'google-map-react';
 
 // import * as Icon from 'react-feather';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { MapsContext, PointsContext } from '../../Context/PointsContext';
+import { faLocationCrosshairs, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { MapsContext } from '../../Context/PointsContext';
 import { MapSearchBox } from "../MapSearchBox/MapSearchBox";
-import { useFetcher } from "react-router-dom";
+// import { useFetcher } from "react-router-dom";
 
-library.add(faLocationDot);
+library.add(faLocationDot, faLocationCrosshairs);
 
 
 export const Map = (props) => {
@@ -24,8 +24,17 @@ export const Map = (props) => {
         const style = mProps.$hover || mProps.id === mProps.hoverMarker ? { color: '#758BFD', transform: 'scale(1.5)' } : { color: '#e95e02 '};
         // const hoverstyle =  ? { color: '#758BFD', transform: 'scale(1.5)' } : { color: '#e95e02 '};
 
-        return <div className="SuperAwesomePin" style={style}>
+        return <div className="map-marker" style={style}>
             <FontAwesomeIcon icon="fa-solid fa-location-dot" size="xl" className="pin" />
+        </div>
+      }
+
+    const TempMarker = (mProps) => { 
+        const style = mProps.$hover || mProps.id === mProps.hoverMarker ? { color: '#758BFD', transform: 'scale(1.2)' } : { color: '#e95e02 '};
+        // const hoverstyle =  ? { color: '#758BFD', transform: 'scale(1.5)' } : { color: '#e95e02 '};
+
+        return <div className="map-marker" style={style}>
+            <FontAwesomeIcon icon="fa-solid fa-location-crosshairs" size="xl"  />
         </div>
       }
 
@@ -158,6 +167,7 @@ export const Map = (props) => {
     const [map, setMap] = useState(null);
     const [googleMaps, setGoogleMaps] = useState(null);
     const {mapState, setMapState} = useContext(MapsContext);
+    const [tempMarker, setTempMarker] = useState(null);
 
 
     const handleApiLoaded = (map, maps) => {
@@ -165,17 +175,22 @@ export const Map = (props) => {
         setGoogleMaps(maps);
     };
 
-    const placeMapPin = (event) => {
+    const placeMapPin = (event, context) => {
         if (mapState.pointSelecting) {
             props.handlePointSelect(event);
             //add to markers
             //save that to the state 
+        } else if (context === 'search') {
+            console.log('pinfromsearch', event);
+            props.handlePointSelect(event);
         }
 
         setMapState(prevState => ({
             ...prevState,
             pointSelecting: false
         }));
+
+        setTempMarker(null);
 
     }
 
@@ -188,18 +203,26 @@ export const Map = (props) => {
     //         map.setZoom(12); 
     //     }}, [map]);
 
-    const handleOnPlacesChange = async (e) => {
-        console.log('Map // e', e);
-        try {
-            const geoHero = new googleMaps.Geocoder();
-            const result = await geoHero.geocode({
-                "address": e
-            })
-            console.log('result', result);
+    const handleOnPlacesChange = async (e, param) => {
+        if (param === 'search') {
+            try {
+                const geoHero = new googleMaps.Geocoder();
+                const result = await geoHero.geocode({
+                    "address": e
+                })
+                const lat = result.results[0].geometry.location.lat(); 
+                const lng = result.results[0].geometry.location.lng(); 
+                map.setCenter({ lat, lng }); 
+                map.setZoom(12); 
+                setTempMarker({
+                    lat: lat,
+                    lng: lng,
+                })
+            }
+            catch(error) {
+                console.error(error)
+            }
         }
-         catch(error) {
-            console.error(error)
-         }
     }
 
 
@@ -220,7 +243,8 @@ export const Map = (props) => {
             <MapSearchBox 
                 map={map} 
                 maps={googleMaps} 
-                onPlacesChanged={(e)=> handleOnPlacesChange(e)} 
+                onPlacesChanged={(e) => handleOnPlacesChange(e, 'search')} 
+                onSetLocation={() => placeMapPin(tempMarker, 'search')}
                 mapState={mapState} />
             <GoogleMapReact
                 bootstrapURLKeys={{
@@ -233,7 +257,7 @@ export const Map = (props) => {
                 }
                 yesIWantToUseGoogleMapApiInternals={true}
                 onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
-                onClick={(event) => {placeMapPin(event)}}
+                onClick={(event) => {placeMapPin(event, 'point')}}
                 >
                     {props.markers.map((mark) => {
                         return <Marker 
@@ -243,6 +267,10 @@ export const Map = (props) => {
                         lat={mark.lat} 
                         lng={mark.lng} />
                     })}
+                    {tempMarker ? 
+                    <TempMarker 
+                        lat={tempMarker.lat} 
+                        lng={tempMarker.lng}/> : null}
                 </GoogleMapReact>
                 {/* <p>Map Goes Here</p> */}
 
