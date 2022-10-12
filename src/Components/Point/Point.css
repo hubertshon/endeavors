@@ -19,6 +19,7 @@
     height: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    pointer-events: none;
 }
 
 .point-title {
@@ -32,8 +33,10 @@
     justify-content: right;
 }
 
-.button-dock button {
+.button-dock button,
+.fp-close {
     color: #9c9c9c;
+    pointer-events: all;
 }
 
 .date-location {

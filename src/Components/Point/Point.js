@@ -15,7 +15,7 @@ export const Point = (props) => {
     return (
         <Container 
             className="point-container" 
-            onClick={() => props.handlePointClick()}
+            onClick={(e) => props.handlePointClick(e)}
             onMouseEnter={(e) => props.pointHover(e)}
             onMouseLeave={(e) => props.pointHover(e)}
             style={pointStyle}
@@ -28,16 +28,7 @@ export const Point = (props) => {
                     <Col>
                     <div className="button-dock">
                         <button className="btn btn-sm btn-link-light"
-                            onClick={() => props.handlePointClick()}
-                        >
-                            <Icon.Maximize2 size="16" />
-                        </button>
-                        {/* <button className="btn btn-sm btn-link-light"
-                            onClick={() => props.handlePointClick()}
-                        >
-                            <Icon.PenTool size="16" /></button> */}
-                        <button className="btn btn-sm btn-link-light"
-                            onClick={() => props.handleRemove()}
+                            onClick={() => props.handleDelete()}
                         >
                             <Icon.Trash size="16" />
                         </button>

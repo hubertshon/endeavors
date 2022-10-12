@@ -60,3 +60,7 @@ textarea {
 .image { 
     width: 100%;
 }
+
+.closeButton:hover {
+    color: rgb(229, 229, 229);
+}

@@ -17,6 +17,7 @@ export const PointFull = (props) => {
     const [formState, setFormState] = useState(formControls);
     const {mapState, setMapState} = useContext(MapsContext);
     const refOne = useRef(false);
+    const imageInput = useRef();
 
     const handleInputClick = (e) => {
         setFormState({
@@ -61,9 +62,19 @@ export const PointFull = (props) => {
         props.onChange(eventObj, props.point.id)
     }
 
+    const handleImageChange = event => {
+        const fileUploaded = event.target.files[0];
+        console.log('Image file', fileUploaded);
+  };
+
+    const handleImageClick = () => {
+        imageInput.current.click();
+    }
+
 
     return (
         <div className="d-flex point-full-container flex-column">
+            <div className="d-flex justify-content-between pointFull-header">
             {formState.pointName ? 
                 <input 
                     name="pointName" 
@@ -77,8 +88,14 @@ export const PointFull = (props) => {
                     ref={refOne} 
                     id="pointName"
                     onClick={(e) => handleInputClick(e)}
-                >{props.point.name}</h4>
+                >{props.point.name}</h4>         
             }
+            <button className="btn btn-sm btn-link-light fp-close" style={{ pointerEvents: "all" }}
+                onClick={() => props.handleClose()}
+                >
+                    <Icon.X size="16" />
+            </button>
+            </div>
             {formState.pointLocation ? 
             <input
                 name="pointLocation"
@@ -130,15 +147,16 @@ export const PointFull = (props) => {
                         <Icon.MapPin size="16" />
                     </button>
                     <button className="btn btn-sm btn-link-light"
+                    onClick={() => handleImageClick()}
                     >
                         <Icon.Camera size="16" />
                     </button>
-                    <button className="btn btn-sm btn-link-light"
-                    onClick={() => props.handleClose()}
-                    >
-                        <Icon.X size="16" />
-                    </button>
             </div>
+            <input type="file"
+                ref={imageInput}
+                onChange={handleImageChange}
+                style={{display:'none'}} 
+            /> 
         </div>
     )
 }

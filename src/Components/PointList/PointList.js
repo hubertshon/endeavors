@@ -53,6 +53,9 @@ export const PointList = (props) => {
             return newList;
         });
 
+        setShowFullPoint(false);
+        handleDeleteClose(false);
+
         //SEND DELETE REQUEST
     }
 
@@ -72,10 +75,12 @@ export const PointList = (props) => {
         //SEND PATCH REQUEST 
     }
     
-    const displayPoint = (point) =>{ 
-        setSelectedPoint(point);
-        setShowFullPoint(true);
-        props.handlePointSelect(point);
+    const displayPoint = (e, point) =>{ 
+        if (e.target?.tagName.toLowerCase() === 'div') {
+            setSelectedPoint(point);
+            setShowFullPoint(true);
+            props.handlePointSelect(point); 
+        }
     }
 
     const pointHover = (e, point) => {
@@ -121,8 +126,7 @@ export const PointList = (props) => {
                     key={point.id} 
                     point={point}
                     handleEdit={() => editPoint(point)}
-                    handleRemove={() => removePoint(point.id)}
-                    handlePointClick={() => displayPoint(point)}
+                    handlePointClick={(e) => displayPoint(e, point)}
                     handleDelete={() => setDeleteShow(true)}
                     pointHover={(e) => pointHover(e, point)}          
                 />
@@ -146,7 +150,11 @@ export const PointList = (props) => {
     </div>
 
     <Modal className="delete-modal" show={deleteShow} size="md" onHide={handleDeleteClose} variant="dark">
-        <DeleteModal subject="point" />
+        <DeleteModal 
+            subject="point" 
+            handleClose={() => handleDeleteClose()}
+            startDelete={() => removePoint(selectedPoint.id)}
+            />
     </Modal>
     </>
     )
