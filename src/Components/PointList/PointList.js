@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './PointList.css';
 import { Point } from "../Point/Point";
 import { PointFull } from "../PointFull/PointFull";
@@ -27,6 +27,10 @@ export const PointList = (props) => {
     const [pointsList, setPointsList] = useState(findJourney(journeyId));
     const [selectedPoint, setSelectedPoint] = useState({});
 
+    useEffect(() => {
+        props.handlePointSelect(selectedPoint)
+    }, [selectedPoint])
+
 
     const addPoint = () => {
         const getJourney = journeysList.journeys.find(journey => journey.id == journeyId ? {...journey} : null); 
@@ -39,6 +43,12 @@ export const PointList = (props) => {
         }));
        
         //SEND POST REQUEST 
+    }
+
+    const addPointProcess = async () => {
+        addPoint();
+        setShowFullPoint(true);
+        setSelectedPoint(pointsList[pointsList.length -1]);
     }
 
     const handleChange = (e, pointId) => {
@@ -87,7 +97,6 @@ export const PointList = (props) => {
         if (e.target?.tagName.toLowerCase() === 'div') {
             setSelectedPoint(point);
             setShowFullPoint(true);
-            props.handlePointSelect(point); 
         }
     }
 
@@ -144,8 +153,7 @@ export const PointList = (props) => {
         <div
         className="newPoint-btn"
         onClick={(e) => {
-            addPoint();
-            setSelectedPoint(exampleNewPoint);
+            addPointProcess();
             }
         }
         >

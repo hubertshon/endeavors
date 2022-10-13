@@ -30,18 +30,12 @@ export const Journey = (props) => {
             newMarkers.push(point.loc)
         });
         setMarkers(newMarkers);
-    }, []);
+    }, [journeysList]);
 
 
 
     const selectMapPoint = (e) => {
         setSelectedPoint(e);
-        // const newMarker = {
-        //     id: 8, //idfrom somehwere..
-        //     lat: e.lat,
-        //     lng: e.lng
-        // }
-        //set state of journey. 
     }
 
     const selectMapLocation = (e) => {
