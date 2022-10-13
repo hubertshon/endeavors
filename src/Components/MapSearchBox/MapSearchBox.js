@@ -80,8 +80,13 @@ export const MapSearchBox = ({ map, maps, onPlacesChanged, placeholder, mapState
     
 
     return <div className="mapsearch-container" style={style}>
-      <button className="add-location-btn" onClick={() => onSetLocation()}><Icon.MapPin size={20} /></button>
-
+      <button 
+      className={"add-location-btn " + (mapState.pointSelecting ? 'pin-active' : 'pin-inactive')} 
+      onClick={() => onSetLocation()}
+      
+      >
+        <Icon.MapPin size={20} />
+    </button>
       <input id="mapsearch" ref={input} placeholder={placeholder} type="text"  />
     </div>
 

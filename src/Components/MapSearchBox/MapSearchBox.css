@@ -24,3 +24,17 @@
 .add-location-btn:hover {
     background-color: #758BFD;
 }
+
+.pin-active {
+    background-color: #ee6611;
+}
+
+.pin-inactive {
+    background-color: rgb(199, 199, 199);
+    pointer-events: none;
+
+}
+
+.pin-inactive:hover {
+    background-color: rgb(199, 199, 199);
+}

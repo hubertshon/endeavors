@@ -73,7 +73,7 @@ export const JourneyList = () => {
         <Container className="list-container">
 
             <Col>
-                <div className="small-map">
+                <div className="small-image">
                 {hoverJourney.image ? <img className="journey-image" src={require(`../../Assets/images/${hoverJourney.image}`)} alt="journey_image" /> 
                 : 
                 <span>Select a Journey</span>
