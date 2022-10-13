@@ -31,7 +31,7 @@ export const MapSearchBox = ({ map, maps, onPlacesChanged, placeholder, mapState
         };
     }, [maps, handleOnPlacesChanged]);
     
-    const style = mapState.mapHover ? { opacity: 1 } : { opacity: 0 };
+    const style = mapState.mapHover || mapState.pointSelecting? { opacity: 1 } : { opacity: 0 };
    
     // const doTheThing = () => {
 

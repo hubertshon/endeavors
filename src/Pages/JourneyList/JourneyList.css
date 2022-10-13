@@ -49,7 +49,6 @@
     width: 23rem;
     height: 23rem;
     object-fit: cover;
-
     animation: journeyAnimate ease-out 1.2s;
     /* animation */
 }
@@ -121,4 +120,16 @@
         filter: saturate(1);
     }
 
+}
+
+
+/* #journeySearchInput:active {
+    border-color: #FF0000;
+    border: none;
+} */
+
+input:focus{
+    /* outline: none; */
+    outline: 1px solid #c3a900;
+    /* border: 0px ; */
 }
