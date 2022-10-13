@@ -21,7 +21,7 @@ export const Map = (props) => {
     }
 
     const Marker = (mProps) => { 
-        const style = mProps.$hover || mProps.id === mProps.hoverMarker ? { color: '#758BFD', transform: 'scale(1.5) translate(-35%, -100%)' } : { color: '#e95e02 '};
+        const style = mProps.$hover || mProps.id === mProps.hoverMarker ? { color: '#758BFD', transform: 'scale(1.5) translate(-35%, -85%)' } : { color: '#e95e02 '};
 
         return <div className="map-marker" style={style}>
             <FontAwesomeIcon icon="fa-solid fa-location-dot" size="xl" className="pin" />

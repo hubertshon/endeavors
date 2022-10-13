@@ -64,12 +64,28 @@ export const PointList = (props) => {
     }
 
     const removePoint = (pointId) => {
+
+        //This first point will only handle the PointList component
         setPointsList((pointsList) => {
             const newList = pointsList.filter((item, j) => {
                 return item.id !== pointId
             });
             return newList;
         });
+
+        const newPointsList = pointsList.filter((item, j) => {
+            return item.id !== pointId
+        });
+
+        setJourneysList(prevState => ({
+            ...prevState,
+            journeys: prevState.journeys.map((journey) => {
+                if (journey.id == journeyId) {
+                    journey.points = newPointsList
+                }
+                return journey
+            })
+        }));
 
         setShowFullPoint(false);
         handleDeleteClose(false);
