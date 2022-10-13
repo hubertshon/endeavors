@@ -234,7 +234,7 @@ export const Map = (props) => {
     return (
         <div 
             className="map-container" 
-            style={mapState.pointSelecting ? { border: '3px solid yellow'} : null}
+            style={mapState.pointSelecting ? { border: '2px solid yellow'} : null}
             onMouseEnter={() => handleMapHover(true)}
             onMouseLeave={() => handleMapHover(false)}
         >

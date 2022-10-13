@@ -29,7 +29,15 @@ export const PointList = (props) => {
 
 
     const addPoint = () => {
-        setPointsList([...pointsList, exampleNewPoint]);
+        const getJourney = journeysList.journeys.find(journey => journey.id == journeyId ? {...journey} : null); 
+        console.log('getJourney/', getJourney);
+        getJourney.points.push(exampleNewPoint);
+        
+        setJourneysList(prevState => ({
+            journeys: prevState.journeys.map(
+                journey => journey.id === getJourney.id ? getJourney : journey)
+        }));
+       
         //SEND POST REQUEST 
     }
 
