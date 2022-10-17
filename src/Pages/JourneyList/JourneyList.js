@@ -72,7 +72,7 @@ export const JourneyList = () => {
         <>
         <Container className="list-container">
 
-            <Col>
+            <Col className="leftCol" md={5} lg={4}>
                 <div className="small-image">
                 {hoverJourney.image ? <img className="journey-image" src={require(`../../Assets/images/${hoverJourney.image}`)} alt="journey_image" /> 
                 : 
@@ -83,9 +83,10 @@ export const JourneyList = () => {
                     {hoverJourney.summary ? <p>{hoverJourney.summary}</p> : <p>Summary goes here...</p>}
                 </div>
             </Col>
-            <Col xs={8}>
+            <Col xs={12} lg={8}>
+
                 <Row className="d-flex mb-4 justify-content-left">
-                    <Col xs={6} className="p-0">
+                    <Col xs={8} lg={9} className="d-flex justify-content-left">
                         <input className="journey-searchBar" id="journeySearchInput" type="text" placeholder="Search..." />
                     </Col>
                     <Col className="d-flex justify-content-left">
@@ -94,7 +95,7 @@ export const JourneyList = () => {
                     >New Journey <Icon.Edit size="14" /></button>
                     </Col>
                 </Row>
-                <div className="journey-list">
+                {/* <div className="journey-list"> */}
                 <Row className="mb-3">
                     <Col className="d-flex justify-content-left">
                         <span className="list-header">Name</span>
@@ -153,7 +154,7 @@ export const JourneyList = () => {
                             </Row>    
                     )
                 })}
-                </div>
+                {/* </div> */}
             </Col>
             
         </Container>

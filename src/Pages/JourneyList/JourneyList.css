@@ -29,7 +29,7 @@
     font-size: 0.8em;
 }
 
-.journey-list a {
+.journey-row a {
     text-decoration: none;
     color: rgb(229, 229, 229);
 }
@@ -122,14 +122,22 @@
 
 }
 
-
-/* #journeySearchInput:active {
-    border-color: #FF0000;
-    border: none;
-} */
-
 input:focus{
     /* outline: none; */
     outline: 1px solid #c3a900;
     /* border: 0px ; */
 }
+
+@media screen and (max-width: 1140px) {
+    /* .small-image {
+        width: 18rem;
+        height: 18rem;
+    } */
+
+  }
+
+  @media screen and (max-width: 992px) {
+    .leftCol {
+        display: none;
+      }
+  }

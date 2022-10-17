@@ -74,3 +74,18 @@
 .no-show-map {
     display: hidden;
 } */
+
+
+@media screen and (max-width: 768px) {
+
+    .detailrow {
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 992) {
+    .pointListCol {
+        height: 30rem;
+        overflow: hidden;
+    }
+}

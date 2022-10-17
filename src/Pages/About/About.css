@@ -22,7 +22,7 @@
     flex-direction: column;
     justify-content: center;
     height: 30rem;
-    width: 60rem;
+    width: 85%;
 }
 
 
@@ -57,7 +57,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: middle;
-    height: 30rem;
+    /* height: 30rem; */
     width: 100%;
 }
 
@@ -82,3 +82,9 @@
     margin-bottom: 2rem;
 }
 
+@media screen and (max-width: 768px) {
+
+    .detailrow {
+        flex-direction: row;
+    }
+}

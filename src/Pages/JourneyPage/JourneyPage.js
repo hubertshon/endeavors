@@ -84,7 +84,7 @@ export const Journey = (props) => {
                     
                 </div>
                 <Row>
-                    <Col>
+                    <Col className="pointListCol">
                     <PointList 
                         handlePointSelect={(e) => selectMapPoint(e)} 
                         handlePointHover={(e) => setHoverMarkerFunc(e)}
