@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import * as Icon from "react-feather";
 import Modal from 'react-bootstrap/Modal';
 import { DeleteModal } from "../DeleteModal/DeleteModal";
+import useWindowDimensions from "../../Hooks/WindowHook";
 
 
 
@@ -26,10 +27,20 @@ export const PointList = (props) => {
     //STATES DIVERGE HERE ??
     const [pointsList, setPointsList] = useState(findJourney(journeyId));
     const [selectedPoint, setSelectedPoint] = useState({});
+    const [mobileView, setMobileView] = useState(true);
+    const [mobileIndex, setMobileIndex] = useState(0);
+    const { height, width } = useWindowDimensions();
 
+ 
     useEffect(() => {
-        props.handlePointSelect(selectedPoint)
-    }, [selectedPoint])
+        props.handlePointSelect(selectedPoint);
+        if (width < 992) {
+            setMobileView(true);
+        } else {
+            setMobileView(false);
+        }
+
+    }, [selectedPoint, width])
 
 
     const addPoint = () => {
@@ -138,37 +149,65 @@ export const PointList = (props) => {
         }
     }
 
+    const handleMobileClick = (iterate) => {
+        if (mobileIndex + iterate >= pointsList.length) {
+            setMobileIndex(0);
+        } else if (mobileIndex + iterate < 0) {
+            setMobileIndex(pointsList.length - 1);
+        } else {
+            setMobileIndex(mobileIndex + iterate);
+        }
+    }
+
     return (
         <>
-        <div id="pointlist" style={{overflowY: "scroll",
-        maxHeight: "70vh"}}>
-        {showFullPoint ? 
-        <div className="container" data-testid="container">
-        <PointFull 
-            point={selectedPoint} 
-            handleClose={() => setShowFullPoint(false)}
-            onChange={(e, val) => handleChange(e, val)}
-            showDeleteModal={() => setDeleteShow(true)}
+        { mobileView ? 
+        
+        <div className="d-flex align-content-center pointListMobile mb-4">
+ 
+            <Point key={pointsList[mobileIndex].id} 
+                point={pointsList[mobileIndex]}
+                handleEdit={() => editPoint(pointsList[mobileIndex])}
+                handlePointClick={(e) => displayPoint(e, pointsList[mobileIndex])}
+                handleDelete={() => setDeleteShow(true)}
+                pointHover={(e) => pointHover(e, pointsList[mobileIndex])}
+                mobileView={mobileView}
+                mobileClick={(e) => handleMobileClick(e)}          
             />
-            </div>
-        : 
-        <>
-        <div className="container" data-testid="container" >
-            {pointsList !== null ? pointsList.map((point, index) => {
-                return <Point 
-                    key={point.id} 
-                    point={point}
-                    handleEdit={() => editPoint(point)}
-                    handlePointClick={(e) => displayPoint(e, point)}
-                    handleDelete={() => setDeleteShow(true)}
-                    pointHover={(e) => pointHover(e, point)}          
-                />
-            }) : null }
-            
+
         </div>
+        
+        :
+        <div 
+            id="pointlist" 
+            style={{overflowY: "scroll", maxHeight: "70vh"}}>
+            {showFullPoint ? 
+            <div className="container" data-testid="container">
+            <PointFull 
+                point={selectedPoint} 
+                handleClose={() => setShowFullPoint(false)}
+                onChange={(e, val) => handleChange(e, val)}
+                showDeleteModal={() => setDeleteShow(true)}
+                />
+            </div>
+            : 
+            <>
+            <div className="container" data-testid="container" >
+                {pointsList !== null ? pointsList.map((point, index) => {
+                    return <Point 
+                        key={point.id} 
+                        point={point}
+                        handleEdit={() => editPoint(point)}
+                        handlePointClick={(e) => displayPoint(e, point)}
+                        handleDelete={() => setDeleteShow(true)}
+                        pointHover={(e) => pointHover(e, point)}          
+                    />
+                }) : null }
+                
+            </div>
         <div
-        className="newPoint-btn"
-        onClick={(e) => {
+            className="newPoint-btn"
+            onClick={(e) => {
             addPointProcess();
             }
         }
@@ -179,8 +218,8 @@ export const PointList = (props) => {
         </>
         }
 
-    </div>
-
+        </div>
+        }
     <Modal className="delete-modal" show={deleteShow} size="md" onHide={handleDeleteClose} variant="dark">
         <DeleteModal 
             subject="point" 

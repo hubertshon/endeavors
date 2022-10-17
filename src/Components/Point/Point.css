@@ -7,6 +7,38 @@
     padding: 1rem;
 }
 
+.point-mobile-container {
+    height: 11rem;
+    /* width: 28rem; */
+    border-radius: 0px;
+    background-color: #333333;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.point-direction-btn {
+    height: 11rem;
+    /* width: 28rem; */
+    /* border-radius: 0px; */
+    border-style: none;
+    background-color: #333333;
+    color: #9c9c9c;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.point-direction-btn:hover { 
+    color: white;
+}
+
+.btn-left {
+    border-radius: 7px 0px 0px 7px;
+}
+
+.btn-right {
+    border-radius: 0px 7px 7px 0px;
+}
+
 
 
 .point-container:hover {

@@ -13,14 +13,21 @@ export const Point = (props) => {
     const pointStyle = props.point.img ? { height: 'unset'} : { height: "11rem" };
 
     return (
+        <>
+        {props.mobileView ? <button 
+            className="point-direction-btn btn-left" 
+            onClick={() => props.mobileClick(-1)}
+            >
+            <Icon.ChevronLeft size={16} />
+        </button> : null} 
         <Container 
-            className="point-container" 
+            className={props.mobileView ? "point-mobile-container" : "point-container"}
             onClick={(e) => props.handlePointClick(e)}
             onMouseEnter={(e) => props.pointHover(e)}
             onMouseLeave={(e) => props.pointHover(e)}
             style={pointStyle}
             >
-            <div className="innerContainer">
+            <div className="innerContainer">  
                 <Row>
                     <Col className="d-flex justify-content-left" xs={9}>
                         <h5 className="point-title">{props.point.name}</h5>
@@ -50,5 +57,11 @@ export const Point = (props) => {
                 
             </div>
         </Container>
+        {props.mobileView ? <button 
+            className="point-direction-btn btn-right" 
+            onClick={() => props.mobileClick(1)}>
+            <Icon.ChevronRight size={16} />
+        </button> : null}
+        </>
     )
 }

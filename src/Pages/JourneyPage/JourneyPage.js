@@ -89,9 +89,8 @@ export const Journey = (props) => {
                         handlePointSelect={(e) => selectMapPoint(e)} 
                         handlePointHover={(e) => setHoverMarkerFunc(e)}
                     /></Col>
-                    <Col>
+                    <Col className="d-flex justify-content-center">
                     <Map 
-                        
                         markers={markers} 
                         handlePointSelect={(e) => selectMapLocation(e)} 
                         hoverMarkerId={hoverMarker}
