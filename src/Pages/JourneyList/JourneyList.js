@@ -72,17 +72,7 @@ export const JourneyList = () => {
         <>
         <Container className="list-container">
 
-            <Col className="leftCol" md={5} lg={4}>
-                <div className="small-image">
-                {hoverJourney.image ? <img className="journey-image" src={require(`../../Assets/images/${hoverJourney.image}`)} alt="journey_image" /> 
-                : 
-                <span>Select a Journey</span>
-                }
-                </div>
-                <div className="summary">
-                    {hoverJourney.summary ? <p>{hoverJourney.summary}</p> : <p>Summary goes here...</p>}
-                </div>
-            </Col>
+
             <Col xs={12} lg={8}>
 
                 <Row className="d-flex mb-4 justify-content-left">
@@ -109,6 +99,7 @@ export const JourneyList = () => {
                 </Row>  
                 {journeysList.journeys.map((journey, index) => {
                     return (  
+                        <>
                             <Row className="mb-3 journey-row" key={`journey_${index}`}>
                                 
                                 <Col className="d-flex justify-content-left align-items-center">
@@ -152,6 +143,21 @@ export const JourneyList = () => {
                                     </Dropdown>
                                 </Col>
                             </Row>    
+
+                            <Row className="leftCol" md={5} lg={4}>
+                                <Col>
+                                <div className="small-image">
+                                <img className="journey-image" src={require(`../../Assets/images/${journey.image}`)} alt="journey_image" /> 
+
+                                </div>
+                            </Col>
+                            <Col xs={8}>
+                            {/* <div className="summary"> */}
+                                <p>{journey.summary}</p>
+                            {/* </div> */}
+                            </Col>
+                            </Row>
+                            </>
                     )
                 })}
                 {/* </div> */}

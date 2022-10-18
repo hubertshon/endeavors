@@ -79,6 +79,66 @@ export const sampleData = {
                     img: ''
                 },
             ]
+        },
+        {id: 3,
+            name: "Dog Journey",
+            summary: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            date: "05.29.2022",
+            image: "pexels-roberto-nickson-2559941.jpg",
+            points: [
+                {
+                    id: 1,
+                    name: "Point One",
+                    location: "Location One",
+                    text: "Lorem ipsum dolor sit amet. At eaque illum ab possimus doloremque rem voluptates doloribus. Rem doloremque sint ad eligendi deserunt id quisquam corrupti vel esse laboriosam. Eos neque esse eos aliquam consequuntur ut quod quia est repudiandae voluptate ut maiores enim quo quasi neque et magnam quas.",
+                    loc: {
+                        id: 1,
+                        lat: null,
+                        lng: null
+                        
+                    },
+                    img: 'doggo1.jpg'
+                },
+                {
+                    id: 2,
+                    name: "Point One",
+                    location: "Location One",
+                    text: "Lorem ipsum dolor sit amet. At eaque illum ab possimus doloremque rem voluptates doloribus. Rem doloremque sint ad eligendi deserunt id quisquam corrupti vel esse laboriosam. Eos neque esse eos aliquam consequuntur ut quod quia est repudiandae voluptate ut maiores enim quo quasi neque et magnam quas.",
+                    loc: {
+                        id: 2,
+                        lat: null,
+                        lng: null
+                        
+                    },
+                    img: 'doggo2.jpg'
+                },
+                {
+                    id: 3,
+                    name: "Point One",
+                    location: "Location One",
+                    text: "Lorem ipsum dolor sit amet. At eaque illum ab possimus doloremque rem voluptates doloribus. Rem doloremque sint ad eligendi deserunt id quisquam corrupti vel esse laboriosam. Eos neque esse eos aliquam consequuntur ut quod quia est repudiandae voluptate ut maiores enim quo quasi neque et magnam quas.",
+                    loc: {
+                        id: 3,
+                        lat: null,
+                        lng: null
+                        
+                    },
+                    img: 'doggo3.jpg'
+                },
+                {
+                    id: 3,
+                    name: "Point Four",
+                    location: "Location One",
+                    text: "Lorem ipsum dolor sit amet. At eaque illum ab possimus doloremque rem voluptates doloribus. Rem doloremque sint ad eligendi deserunt id quisquam corrupti vel esse laboriosam. Eos neque esse eos aliquam consequuntur ut quod quia est repudiandae voluptate ut maiores enim quo quasi neque et magnam quas.",
+                    loc: {
+                        id: 4,
+                        lat: null,
+                        lng: null
+                        
+                    },
+                    img: 'doggo4.jpg'
+                }
+            ]
         }
     ]
     

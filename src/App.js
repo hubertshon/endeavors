@@ -6,7 +6,9 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { Journey } from './Pages/JourneyPage/JourneyPage';
 import { JourneyList } from './Pages/JourneyList/JourneyList';
 import { About } from './Pages/About/About';
-import { Dev } from './Pages/Dev/Dev'
+import { Dev } from './Pages/Dev/Dev';
+import { Photos } from './Pages/Photos/Photos';
+
 
 import { MapsContext, PointsContext } from './Context/PointsContext';
 import { Nav } from './Components/Nav/Nav';
@@ -28,8 +30,8 @@ function App() {
 
   const navLinks2 = [
     {
-      name: "Points", 
-      path: "/points", 
+      name: "Photos", 
+      path: "/photos", 
     },
     {
       name: "Dev.Log",
@@ -54,7 +56,7 @@ useEffect(() => {
       <div className="App">
         <header className="App-header mb-4">
           <Nav navItems={navLinks1} />
-          <Link className="home-btn" to="/"><h1 className="display-2 mx-5">ENDEAVORS</h1></Link>
+          <Link className="home-btn" to="/"><h2 className="display-2 mx-5">ENDEAVORS</h2></Link>
           <Nav navItems={navLinks2}/>
         </header>
         <Routes>
@@ -62,6 +64,7 @@ useEffect(() => {
           <Route path="/journey" element={<JourneyList />} />
           <Route path="/" element={<About />} />
           <Route path="/dev" element={<Dev />} />
+          <Route path="/photos" element={<Photos />} />
         </Routes>
       </div>
       </MapsContext.Provider>

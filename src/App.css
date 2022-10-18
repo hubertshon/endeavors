@@ -16,15 +16,16 @@
 }
 
 .App-header {
-  height: 7rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.App-header h1 {
+.App-header h1, .App-header h2 {
   font-family: "Staatliches", sans-serif;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.07em;
+  font-size: 2.3em;
 }
 
 html {

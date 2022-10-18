@@ -12,6 +12,7 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     text-decoration: none;
+    font-size: 0.75em;
 }
 
 .nav-item:hover {
