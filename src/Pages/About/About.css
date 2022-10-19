@@ -19,7 +19,7 @@
 }
 
 .quote-area {
-    min-height: 60vh;
+    min-height: 65vh;
     justify-self: center;
     align-content: center;
     justify-content: center;
@@ -28,7 +28,7 @@
 
 
 .about-quote {
-    font-size: 2.6em;
+    font-size: 2.6rem;
     font-family: "Nothing You Could Do", sans-serif;
     text-align: left;
     text-justify: inter-character;
@@ -70,9 +70,6 @@
     align-content: center;
 }
 
-.info-container .col {
-}
-
 .about-text {
     font-size: 1.35em;
 }
@@ -86,5 +83,40 @@
 
     .detailrow {
         flex-direction: row;
+    }
+
+    .quote-area {
+        width: 100%; 
+    }
+
+    .about-quote {
+        font-size: 2.25rem;
+    }
+
+    .about-author {
+        font-size: 1.25rem;
+    }
+
+    .about-container {
+        width: 100%;
+    }
+
+    
+}
+
+@media screen and (max-width: 576px) {
+    .quote-area {
+        width: 100%; 
+    }
+
+    .about-quote {
+        font-size: 1.75rem;
+    }
+
+    .about-author {
+        font-size: 0.85rem;
+    }
+    .about-container {
+        width: unset;
     }
 }

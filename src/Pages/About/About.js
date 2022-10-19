@@ -33,7 +33,6 @@ export const About = () => {
                     <h5 className="about-author">{quote.author}</h5>
                 </Row>
             </Row>
-            <Container className="info-container">
                 <Row className="d-flex flex-wrap detailrow g-5">
                     <Col className="align-content-left" sm={12} md={4}>
                     <p className="about-text">Endeavors is a travel logging app meant to record meaningful steps from each of your journeys.</p>
@@ -46,7 +45,6 @@ export const About = () => {
                     <p className="about-text">Document the highlights of your trip by adding <strong>Points</strong>. Points can include a brief summary, map marker, and photo. </p>
                     </Col>
                 </Row>
-            </Container>
         </Container>
 
     )

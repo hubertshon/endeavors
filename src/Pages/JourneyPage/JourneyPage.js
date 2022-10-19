@@ -84,12 +84,12 @@ export const Journey = (props) => {
                     
                 </div>
                 <Row>
-                    <Col className="pointListCol">
+                    <Col className="pointListCol" lg={5}>
                     <PointList 
                         handlePointSelect={(e) => selectMapPoint(e)} 
                         handlePointHover={(e) => setHoverMarkerFunc(e)}
                     /></Col>
-                    <Col className="d-flex justify-content-center">
+                    <Col className="d-flex justify-content-center" lg={7}>
                     <Map 
                         markers={markers} 
                         handlePointSelect={(e) => selectMapLocation(e)} 

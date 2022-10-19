@@ -12,6 +12,7 @@ import { Photos } from './Pages/Photos/Photos';
 
 import { MapsContext, PointsContext } from './Context/PointsContext';
 import { Nav } from './Components/Nav/Nav';
+import { NavMobile } from './Components/NavMobile/NavMobile';
 import { sampleData } from './sampledata';
 
 
@@ -39,6 +40,25 @@ function App() {
     }
   ]
 
+  const mobileNavList = [
+    {
+      name: "Journeys",
+      path: "/journey"
+    },
+    {
+      name: "Photos", 
+      path: "/photos", 
+    },
+    {
+      name: "About", 
+      path: "/", 
+    },
+    {
+      name: "Dev.Log",
+      path: "/dev"
+    }
+  ]
+
 const defaultMapState = () => {
   return {pointSelecting: false, mapHover: false
   }
@@ -56,8 +76,9 @@ useEffect(() => {
       <div className="App">
         <header className="App-header mb-4">
           <Nav navItems={navLinks1} />
-          <Link className="home-btn" to="/"><h2 className="display-2 mx-5">ENDEAVORS</h2></Link>
+          <Link className="home-btn" to="/"><h2 className="display-2">ENDEAVORS</h2></Link>
           <Nav navItems={navLinks2}/>
+          <NavMobile navItems={mobileNavList} />
         </header>
         <Routes>
           <Route path="/journey/:journeyId" element={<Journey />} />

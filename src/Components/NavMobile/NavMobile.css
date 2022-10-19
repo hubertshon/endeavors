@@ -1,0 +1,65 @@
+
+
+.mobile-visible {
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .mobile-visible {
+      display: block;
+    }
+  
+}
+
+.mobile-menu {
+    position: fixed;
+}
+
+
+.menu {
+    position: fixed;
+    display: flex;
+    width: 30%;
+    right: 0;
+    height: 100%;
+    top: 0;
+    background-color: rgb(53, 53, 53);
+    color: white;
+    align-items: start;
+    justify-content: start;
+    z-index: 99;
+}
+
+.menuInner {
+    height: 45%;
+    /* margin-top: 3rem !important; */
+    justify-content: center;
+    width: 100%;
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.nav-menu-item {
+    color: #e5e5e5;
+    text-transform: uppercase; 
+    font-size: 0.85em;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+}
+
+.nav-menu-item:hover {
+    color: rgb(165, 165, 165);;
+}
+
+.closeRow {
+    height: 3rem;
+    align-content: left;
+}
+
+.closeButton {
+    justify-self: left;
+    width: 2rem;
+    margin-left: -1rem;
+}

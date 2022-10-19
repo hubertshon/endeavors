@@ -66,7 +66,7 @@ export const JourneyList = () => {
             {/* <Row xs={12}> */}
 
                 <Row className="d-flex mb-5 justify-content-between">
-                    <Col xs={9} lg={10} className="d-flex justify-content-left">
+                    <Col xs={8} lg={10} className="d-flex justify-content-left">
                         <input className="journey-searchBar" id="journeySearchInput" type="text" placeholder="Search..." />
                     </Col>
                     <Col className="d-flex justify-content-end">

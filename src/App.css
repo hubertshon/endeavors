@@ -26,7 +26,10 @@
   font-family: "Staatliches", sans-serif;
   letter-spacing: 0.07em;
   font-size: 2.3em;
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
+
 
 html {
   background-color: rgb(24, 24, 24); 
@@ -40,4 +43,24 @@ html {
 
 .home-btn:hover {
   color: white;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .App-header {
+    justify-content: space-between;
+  }
+
+  
+  .App-header{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .App-header h2{
+    margin: unset;
+  }
 }
