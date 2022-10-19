@@ -24,15 +24,15 @@ export const About = () => {
 
     return (
         <Container className="about-container">
-            <div className="quote-area">
-                <Row>
-                    {/* <h1 className="quote">Feeling and longing are the motive forces behind all human <strong>endeavor</strong> and human creations.</h1> */}
-                    <h1 className="quote">{quote.text}</h1>
+
+            <Row className="quote-area d-flex">
+                <Row className="d-flex align-content-center">
+                    <h1 className="about-quote">{quote.text}</h1>
                 </Row>
                 <Row>
-                    <h5 className="author">{quote.author}</h5>
+                    <h5 className="about-author">{quote.author}</h5>
                 </Row>
-            </div>
+            </Row>
             <Container className="info-container">
                 <Row className="d-flex flex-wrap detailrow g-5">
                     <Col className="align-content-left" sm={12} md={4}>

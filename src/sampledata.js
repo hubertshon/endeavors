@@ -84,7 +84,7 @@ export const sampleData = {
             name: "Dog Journey",
             summary: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
             date: "05.29.2022",
-            image: "pexels-roberto-nickson-2559941.jpg",
+            image: "doggo2.jpg",
             points: [
                 {
                     id: 1,
