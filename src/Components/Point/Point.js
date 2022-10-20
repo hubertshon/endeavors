@@ -10,7 +10,7 @@ import * as Icon from 'react-feather';
 
 export const Point = (props) => {
 
-    const pointStyle = props.point.img ? { height: 'unset'} : { height: "11rem" };
+    const pointStyle = props.point.img  && !props.mobileView ? { height: 'unset'} : { height: "11rem" };
 
     return (
         <>
@@ -32,7 +32,9 @@ export const Point = (props) => {
                     <Col className="d-flex justify-content-left" xs={9}>
                         <h5 className="point-title">{props.point.name}</h5>
                     </Col>
+                    {!props.mobileView ? 
                     <Col>
+                    
                     <div className="button-dock">
                         <button className="btn btn-sm btn-link-light"
                             onClick={() => props.handleDelete()}
@@ -40,14 +42,16 @@ export const Point = (props) => {
                             <Icon.Trash size="16" />
                         </button>
                     </div>
-                    </Col>
+
+                    </Col> : null
+                    }
                 </Row>
                 <Row>
                     <Col className="d-flex justify-content-left">
                         <p className="date-location">01.12.2021 - {props.point.location}</p>
                     </Col>
                 </Row>
-                {props.point.img.length > 0 ? <Row className="mb-2">
+                {props.point.img.length > 0 && !props.mobileView ? <Row className="mb-2">
                     <img src={require(`../../Assets/images/${props.point.img}`)} alt="image1" />
                 </Row> 
                 : 

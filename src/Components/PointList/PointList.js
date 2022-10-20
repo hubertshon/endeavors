@@ -34,18 +34,23 @@ export const PointList = (props) => {
  
     useEffect(() => {
         props.handlePointSelect(selectedPoint);
+        props.handlePointHover(pointsList[mobileIndex])
+
         if (width < 992) {
             setMobileView(true);
         } else {
             setMobileView(false);
         }
 
-    }, [selectedPoint, width])
+    }, [selectedPoint, width]);
+
+    useEffect(() => {
+        props.handlePointHover(pointsList[mobileIndex]);
+    }, [mobileIndex]);
 
 
     const addPoint = () => {
         const getJourney = journeysList.journeys.find(journey => journey.id == journeyId ? {...journey} : null); 
-        console.log('getJourney/', getJourney);
         getJourney.points.push(exampleNewPoint);
         
         setJourneysList(prevState => ({
@@ -150,13 +155,15 @@ export const PointList = (props) => {
     }
 
     const handleMobileClick = (iterate) => {
+        let newIndex = 0;
         if (mobileIndex + iterate >= pointsList.length) {
-            setMobileIndex(0);
+            newIndex = 0;
         } else if (mobileIndex + iterate < 0) {
-            setMobileIndex(pointsList.length - 1);
+            newIndex = pointsList.length - 1;
         } else {
-            setMobileIndex(mobileIndex + iterate);
+            newIndex = mobileIndex + iterate;
         }
+        setMobileIndex(newIndex);
     }
 
     return (
@@ -165,16 +172,25 @@ export const PointList = (props) => {
         
         <div className="d-flex align-content-center pointListMobile mb-4">
  
+            {showFullPoint ? 
+            <PointFull 
+                point={selectedPoint} 
+                handleClose={() => setShowFullPoint(false)}
+                onChange={(e, val) => handleChange(e, val)}
+                showDeleteModal={() => setDeleteShow(true)}
+                />
+            :
             <Point key={pointsList[mobileIndex].id} 
                 point={pointsList[mobileIndex]}
                 handleEdit={() => editPoint(pointsList[mobileIndex])}
                 handlePointClick={(e) => displayPoint(e, pointsList[mobileIndex])}
                 handleDelete={() => setDeleteShow(true)}
-                pointHover={(e) => pointHover(e, pointsList[mobileIndex])}
+                pointHover={() => {}}
                 mobileView={mobileView}
                 mobileClick={(e) => handleMobileClick(e)}          
             />
 
+            }
         </div>
         
         :

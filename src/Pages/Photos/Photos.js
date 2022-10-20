@@ -3,7 +3,6 @@ import './Photos.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { PointsContext } from '../../Context/PointsContext';
 import { Modal } from 'react-bootstrap';
-import * as Icon from 'react-feather';
 
 export const Photos = () => {
 
@@ -43,14 +42,13 @@ export const Photos = () => {
         <Container>
             {photoPoints?.map((journey) => {
                 return (
-                <Row className="mb-5">
-                    <Row><h5 className="journeyTitle">{journey.journeyTitle}</h5></Row>
+                <Row className="mb-3">
+                    <Row><h5 className="journeyTitle mb-3">{journey.journeyTitle}</h5></Row>
                     <Row className="d-flex">
                         {journey.photos.map((point) => {
 
                             return (
-                            // <div className="photo-card" onClick={() => {setShowPhoto(true); setCurrentPhoto(require(`../../Assets/images/${point.img}`))}}>
-                            <Col lg={2}>
+                            <Col xs={6} lg={2} className="mb-4">
                                 <img 
                                     src={require(`../../Assets/images/${point.img}`)} 
                                     alt="image1" className="j-image" 

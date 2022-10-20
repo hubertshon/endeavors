@@ -25,11 +25,13 @@
     right: 0;
     height: 100%;
     top: 0;
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(41, 41, 41);
     color: white;
     align-items: start;
     justify-content: start;
     z-index: 99;
+    animation: slideIn 0.2s ease-out;
+    animation-fill-mode: forwards;
 }
 
 .menuInner {
@@ -55,6 +57,7 @@
 
 .closeRow {
     height: 3rem;
+    margin-top: 0.25rem;
     align-content: left;
 }
 
@@ -62,4 +65,19 @@
     justify-self: left;
     width: 2rem;
     margin-left: -1rem;
+    cursor: pointer;
+}
+
+.closeButton:hover {
+    color: rgb(72, 72, 72);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%)
+    }
+
+    to {
+        transform: translateX(0%);
+    }
 }

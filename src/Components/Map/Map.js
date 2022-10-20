@@ -192,15 +192,6 @@ export const Map = (props) => {
 
     }
 
-    // const handleOnPlacesChange = useCallback(e => { 
-    //     console.log('Map // handleOnPlacesChanged', e);
-    //     if (e && e[0] && e[0].geometry) { 
-    //         const lat = e[0].geometry.location.lat(); 
-    //         const lng = e[0].geometry.location.lng(); 
-    //         map.setCenter({ lat, lng }); 
-    //         map.setZoom(12); 
-    //     }}, [map]);
-
     const handleOnPlacesChange = async (e, param) => {
         if (param === 'search') {
             try {
