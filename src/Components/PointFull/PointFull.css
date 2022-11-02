@@ -7,6 +7,9 @@
     overflow: hidden;
     padding: 1rem;  
     justify-content: left;
+    
+    animation: openPoint 0.2s ease-out;
+    animation-fill-mode: forwards;
 }
 
 
@@ -63,4 +66,19 @@ textarea {
 
 .closeButton:hover {
     color: rgb(229, 229, 229);
+}
+
+
+@keyframes openPoint {
+    from {
+        min-height: 4rem;
+    }
+
+    to {
+        min-height: 28rem;
+    }
+}
+
+.location {
+    font-size: 0.8em;
 }

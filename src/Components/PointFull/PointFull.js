@@ -19,15 +19,6 @@ export const PointFull = (props) => {
     const refOne = useRef(false);
     const imageInput = useRef();
 
-    const handleInputClick = (e) => {
-        setFormState({
-            ...formState,
-            [e.target.id]: true
-        });
-    }
-
-    
-
     useEffect(() => {
         setMapState({...mapState})
         document.addEventListener("click", handleClickOutside);
@@ -36,6 +27,13 @@ export const PointFull = (props) => {
             document.removeEventListener("click", handleClickOutside);
           };
     }, []);
+
+    const handleInputClick = (e) => {
+        setFormState({
+            ...formState,
+            [e.target.id]: true
+        });
+    }
 
     const handleClickOutside = (e) => {
         if (refOne.current && !refOne.current.contains(e.target)) {
@@ -64,7 +62,6 @@ export const PointFull = (props) => {
 
     const handleImageChange = event => {
         const fileUploaded = event.target.files[0];
-        console.log('Image file', fileUploaded);
   };
 
     const handleImageClick = () => {
@@ -96,21 +93,7 @@ export const PointFull = (props) => {
                     <Icon.X size="16" />
             </button>
             </div>
-            {formState.pointLocation ? 
-            <input
-                name="pointLocation"
-                id="location"
-                type="text"
-                ref={refOne}
-                defaultValue={props.point.location} 
-                onChange={(e) => {props.onChange(e, props.point.id)}} /> 
-            : 
-            <h6 className="location" 
-                ref={refOne} 
-                id="pointLocation" 
-                onClick={(e) => handleInputClick(e)}
-                >{props.point.location}</h6>
-            }
+ 
 
             {formState.pointText ? 
                 <MyEditor
@@ -134,23 +117,44 @@ export const PointFull = (props) => {
             {props.point.img.length > 0 ? 
             <img src={require(`../../Assets/images/${props.point.img}`)} className="image" alt="image1" /> : null }
 
+
+
             
-            <div className="align-self-end button-dock mt-auto">
-                    <button className="btn btn-sm btn-link-light"
-                    onClick={() => props.showDeleteModal()}
-                    >
-                        <Icon.Trash size="16" />
-                    </button>
-                    <button className={`btn btn-sm btn-link-light ${mapState.pointSelecting ? 'b-highlight' : ''}`}
-                    onClick={makePointSelectable}
-                    >
-                        <Icon.MapPin size="16" />
-                    </button>
-                    <button className="btn btn-sm btn-link-light"
-                    onClick={() => handleImageClick()}
-                    >
-                        <Icon.Camera size="16" />
-                    </button>
+            <div className="align-self-end justify-content-between align-items-center button-dock mt-auto">
+            {/* {formState.pointLocation ? 
+            <input
+                name="pointLocation"
+                className="align-self-end location w-50"
+                id="location"
+                type="text"
+                ref={refOne}
+                defaultValue={props.point.location} 
+                onChange={(e) => {props.onChange(e, props.point.id)}} /> 
+            :  */}
+            <p className="location mt-1 mb-0"
+                
+                ref={refOne} 
+                id="pointLocation" 
+                onClick={(e) => handleInputClick(e)}
+                >{props.point.location}</p>
+            {/* } */}
+                    <div>
+                        <button className="btn btn-sm btn-link-light"
+                        onClick={() => props.showDeleteModal()}
+                        >
+                            <Icon.Trash size="16" />
+                        </button>
+                        <button className={`btn btn-sm btn-link-light ${mapState.pointSelecting ? 'b-highlight' : ''}`}
+                        onClick={makePointSelectable}
+                        >
+                            <Icon.MapPin size="16" />
+                        </button>
+                        <button className="btn btn-sm btn-link-light"
+                        onClick={() => handleImageClick()}
+                        >
+                            <Icon.Camera size="16" />
+                        </button>
+                    </div>
             </div>
             <input type="file"
                 ref={imageInput}

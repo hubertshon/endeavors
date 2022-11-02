@@ -16,7 +16,6 @@ export const JourneyList = () => {
     const {journeysList, setJourneysList} = useContext(PointsContext);
     const [selectJourney, setSelectJourney] = useState({});
     
-
     const addNewJourney = () => {
         setJourneysList({ journeys: [
             ...journeysList.journeys, 
@@ -55,6 +54,7 @@ export const JourneyList = () => {
         handleClose();
     }
 
+    //MODAL STATES
     const [show, setShow] = useState(false);
     const [deleteShow, setDeleteShow] = useState(false);
     const handleClose = () => {setShow(false); setDeleteShow(false)};
@@ -63,7 +63,6 @@ export const JourneyList = () => {
     return (
         <>
         <Container className="list-container">
-            {/* <Row xs={12}> */}
 
                 <Row className="d-flex mb-5 justify-content-between">
                     <Col xs={9} lg={10} xl={11} className="d-flex justify-content-left">
@@ -94,7 +93,7 @@ export const JourneyList = () => {
                 {journeysList.journeys.map((journey, index) => {
                     return (  
     
-                        <Row className="mb-5">
+                        <Row className="mb-5" key={"journey_" + index}>
                             <Col xs={2} className="image-column">
                                 <div className="small-image">
                                     <img 
@@ -125,7 +124,6 @@ export const JourneyList = () => {
                                 
 
                             <Col className="d-flex align-items-center justify-content-center" xs={1}>
-                                {/* <span>{journey.description}</span> */}
                                 <Dropdown>
 
                                     <Dropdown.Toggle>
@@ -153,7 +151,6 @@ export const JourneyList = () => {
                            
                     )
                 })}
-            {/* </Row> */}
             
         </Container>
 

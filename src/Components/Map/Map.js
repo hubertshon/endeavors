@@ -174,13 +174,26 @@ export const Map = (props) => {
         setGoogleMaps(maps);
     };
 
-    const placeMapPin = (event, context) => {
+    const placeMapPin = async (event, context) => {
         if (mapState.pointSelecting) {
-            props.handlePointSelect(event);
+            const addressString = await reverseGeocode(event).then((result) => {
+                const addressObject = {
+                    // streetNumber: parseAddress(result, 'street_number', 'long_name'),
+                    // route: parseAddress(result, 'route', 'long_name'),
+                    neighborhood: parseAddress(result, 'neighborhood', 'long_name'),
+                    sublocality: parseAddress(result, 'sublocality', 'long_name'),
+                    adminArea: parseAddress(result, 'administrative_area_level_1', 'short_name')
+                }
+
+                const addressString = Object.values(addressObject).join(", ");
+                return addressString
+            });
+            props.handlePointSelect(event, addressString);
+
             //add to markers
             //save that to the state 
         } else if (context === 'search') {
-            props.handlePointSelect(event);
+            props.handlePointSelect(event, '');
         }
 
         setMapState(prevState => ({
@@ -190,6 +203,30 @@ export const Map = (props) => {
 
         setTempMarker(null);
 
+    }
+
+    const reverseGeocode = async (e) => {
+        try {
+            const geocoderService = new googleMaps.Geocoder();
+            const latLng = { lat: e.lat, lng: e.lng }
+            const result = await geocoderService.geocode({
+                "location": latLng
+            });
+            return result
+            
+        }
+        catch(error) {
+            console.error(error);
+        }
+        
+    }
+
+    const parseAddress = (result, param, name) => {
+        const component = result.results[0].address_components.find((component) => {
+            return component.types.includes(param);
+        });
+
+        return component[name]
     }
 
     const handleOnPlacesChange = async (e, param) => {

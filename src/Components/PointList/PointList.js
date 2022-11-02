@@ -24,7 +24,6 @@ export const PointList = (props) => {
     }
 
 
-    //STATES DIVERGE HERE ??
     const [pointsList, setPointsList] = useState(findJourney(journeyId));
     const [selectedPoint, setSelectedPoint] = useState({});
     const [mobileView, setMobileView] = useState(true);
@@ -80,7 +79,6 @@ export const PointList = (props) => {
     }
 
     const removePoint = (pointId) => {
-
         //This first point will only handle the PointList component
         setPointsList((pointsList) => {
             const newList = pointsList.filter((item, j) => {
@@ -221,16 +219,16 @@ export const PointList = (props) => {
                 }) : null }
                 
             </div>
-        <div
-            className="newPoint-btn"
-            onClick={(e) => {
-            addPointProcess();
+            <div
+                className="newPoint-btn"
+                onClick={(e) => {
+                addPointProcess();
+                }
             }
-        }
-        >
-            <span>ADD NEW POINT</span>
-            <Icon.PlusCircle size="24" />
-        </div>
+            >
+                <span>ADD NEW POINT</span>
+                <Icon.PlusCircle size="24" />
+            </div>
         </>
         }
 

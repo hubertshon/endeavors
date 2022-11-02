@@ -12,7 +12,6 @@ export const Photos = () => {
     const [ currentPhoto, setCurrentPhoto] = useState('');
 
     useEffect(() => {
-        // photoPoints.length = 0;
         const photoJourneys = journeysList.journeys.map((journey) => {
             const newEntry = {
                 journeyTitle: journey.name,
@@ -21,18 +20,14 @@ export const Photos = () => {
             }
             
             newEntry.photos = journey.points.filter((point) => {
-                console.log(point.img.length);
                 return point.img.length > 0
             });
             
             return newEntry
         });
-
         const filtered = photoJourneys.filter((photoJourney) => {
             return photoJourney.photos.length > 0
         })
-
-        console.log('photoJourneys', photoJourneys);
         setPhotoPoints(filtered);
 
     }, [journeysList]);

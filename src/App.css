@@ -5,14 +5,10 @@
 
 
 .App {
-  /* text-align: center; */
   color: rgb(229, 229, 229);
   height: 100%;
   background-color: rgb(24, 24, 24); 
   font-family: 'Avenir', sans-serif;
-  /* background: url(../src/Assets/mockaroon-YqUeLG7fMr4-unsplash.jpg) repeat top left; */
-
-
 }
 
 .App-header {

@@ -8,13 +8,12 @@ import { Container, Row, Col } from "react-bootstrap";
 
 export const About = () => {
 
-
+    const [quote, setQuote] = useState({ text: null, author: null});
     const quoteItemNum = quotes.length - 1;
     const randomIntFromInterval = (max, min) => {
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
-    const [quote, setQuote] = useState({ text: null, author: null});
 
     useEffect(() => {
         const randomIndex = randomIntFromInterval(0, quoteItemNum);
